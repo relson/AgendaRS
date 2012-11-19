@@ -26,7 +26,7 @@ if (!isset($filterfield) && isset($_SESSION["filter_field"]))
 <html>
     <head>
         <title>AgendaRS - [Endere&ccedil;o]</title>
-        <meta name="generator" http-equiv="content-type" content="text/html">
+        <meta name="generator" http-equiv="content-type" content="text/html" charset="ISO-8859-1">
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
@@ -181,7 +181,7 @@ function select() {
     if ($filterfield == "codigoEndereco") {
         echo "selected";
     }
-    ?>><?php echo htmlspecialchars("Codigo") ?></option>
+    ?>><?php echo htmlspecialchars("Código") ?></option>
                         <option value="<?php echo "lp_codigoTipoEndereco" ?>"<?php
                             if ($filterfield == "lp_codigoTipoEndereco") {
                                 echo "selected";
@@ -191,7 +191,7 @@ function select() {
                             if ($filterfield == "endereco") {
                                 echo "selected";
                             }
-                            ?>><?php echo htmlspecialchars("Endereco") ?></option>
+                            ?>><?php echo htmlspecialchars("Endereço") ?></option>
                     </select></td>
                 <td><input type="checkbox" name="wholeonly"<?php echo $checkstr ?>>Coincidir palavras completas</td>
                 </td></tr>
@@ -210,9 +210,9 @@ function select() {
             <td class="hr">&nbsp;</td>
             <td class="hr">&nbsp;</td>
             <td class="hr">&nbsp;</td>
-            <td class="hr"><a class="hr" href="endereco.php?order=<?php echo "codigoEndereco" ?>&type=<?php echo $ordtypestr ?>"><?php echo htmlspecialchars("Codigo") ?></a></td>
+            <td class="hr"><a class="hr" href="endereco.php?order=<?php echo "codigoEndereco" ?>&type=<?php echo $ordtypestr ?>"><?php echo htmlspecialchars("Código") ?></a></td>
             <td class="hr"><a class="hr" href="endereco.php?order=<?php echo "lp_codigoTipoEndereco" ?>&type=<?php echo $ordtypestr ?>"><?php echo htmlspecialchars("Tipo") ?></a></td>
-            <td class="hr"><a class="hr" href="endereco.php?order=<?php echo "endereco" ?>&type=<?php echo $ordtypestr ?>"><?php echo htmlspecialchars("Endereco") ?></a></td>
+            <td class="hr"><a class="hr" href="endereco.php?order=<?php echo "endereco" ?>&type=<?php echo $ordtypestr ?>"><?php echo htmlspecialchars("Endereço") ?></a></td>
         </tr>
         <?php
         for ($i = $startrec; $i < $reccount; $i++) {
@@ -245,7 +245,7 @@ function showrow($row, $recid) {
     ?>
     <table class="tbl" border="0" cellspacing="1" cellpadding="5"width="50%">
         <tr>
-            <td class="hr"><?php echo htmlspecialchars("Codigo") . "&nbsp;" ?></td>
+            <td class="hr"><?php echo htmlspecialchars("Código") . "&nbsp;" ?></td>
             <td class="dr"><?php echo htmlspecialchars($row["codigoEndereco"]) ?></td>
         </tr>
         <tr>
@@ -253,7 +253,7 @@ function showrow($row, $recid) {
             <td class="dr"><?php echo htmlspecialchars($row["lp_codigoTipoEndereco"]) ?></td>
         </tr>
         <tr>
-            <td class="hr"><?php echo htmlspecialchars("Endereco") . "&nbsp;" ?></td>
+            <td class="hr"><?php echo htmlspecialchars("Endereço") . "&nbsp;" ?></td>
             <td class="dr"><?php echo htmlspecialchars($row["endereco"]) ?></td>
         </tr>
     </table>
@@ -285,7 +285,7 @@ function showroweditor($row, $iseditmode) {
             </td>
         </tr>
         <tr>
-            <td class="hr"><?php echo htmlspecialchars("Endereco") . "&nbsp;" ?></td>
+            <td class="hr"><?php echo htmlspecialchars("Endereço") . "&nbsp;" ?></td>
             <td class="dr"><textarea cols="35" rows="4" name="endereco"><?php echo str_replace('"', '&quot;', trim($row["endereco"])) ?></textarea></td>
         </tr>
     </table>
@@ -334,7 +334,7 @@ function showroweditor($row, $iseditmode) {
     }
     ?>
     <?php if ($page < $pagecount) { ?>
-                <td>&nbsp;<a href="endereco.php?page=<?php echo $page + 1 ?>">Prï¿½ximo&nbsp;&gt;&gt;</a>&nbsp;</td>
+                <td>&nbsp;<a href="endereco.php?page=<?php echo $page + 1 ?>">Próximo&nbsp;&gt;&gt;</a>&nbsp;</td>
     <?php } ?>
         </tr>
     </table>
@@ -346,11 +346,11 @@ function showroweditor($row, $iseditmode) {
             ?>
     <table class="bd" border="0" cellspacing="1" cellpadding="4">
         <tr>
-            <td><a href="endereco.php">Pï¿½gina Inicial</a></td>
+            <td><a href="endereco.php">Página Inicial</a></td>
     <?php if ($recid > 0) { ?>
                 <td><a href="endereco.php?a=<?php echo $a ?>&recid=<?php echo $recid - 1 ?>">Registro Anterior</a></td>
     <?php } if ($recid < $count - 1) { ?>
-                <td><a href="endereco.php?a=<?php echo $a ?>&recid=<?php echo $recid + 1 ?>">Prï¿½ximo Registro</a></td>
+                <td><a href="endereco.php?a=<?php echo $a ?>&recid=<?php echo $recid + 1 ?>">Próximo Registro</a></td>
     <?php } ?>
         </tr>
     </table>
@@ -363,7 +363,7 @@ function addrec() {
     ?>
     <table class="bd" border="0" cellspacing="1" cellpadding="4">
         <tr>
-            <td><a href="endereco.php">Pï¿½gina Inicial</a></td>
+            <td><a href="endereco.php">Página Inicial</a></td>
         </tr>
     </table>
     <hr size="1" noshade>

@@ -26,7 +26,7 @@ if (!isset($filterfield) && isset($_SESSION["filter_field"]))
 <html>
     <head>
         <title>AgendaRS - [Tarefa]</title>
-        <meta name="generator" http-equiv="content-type" content="text/html">
+        <meta name="generator" http-equiv="content-type" content="text/html"charset="ISO-8859-1">
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
@@ -35,7 +35,7 @@ if (!isset($filterfield) && isset($_SESSION["filter_field"]))
             <tr>
 
                 <td width="10%" valign="top">
-            <h3>Cadastro</h3>
+                    <h3>Cadastro</h3>
             <li><a href="contato.php?a=reset">Contato</a>
             <li><a href="telefone.php?a=reset">Telefone</a>
             <li><a href="email.php?a=reset">e-mail</a>
@@ -177,36 +177,56 @@ function select() {
                 <td><input type="text" name="filter" value="<?php echo $filter ?>"></td>
                 <td><select name="filter_field">
                         <option value="">Todos os Campos</option>
-                        <option value="<?php echo "codigoTarefa" ?>"<?php if ($filterfield == "codigoTarefa") {
+                        <option value="<?php echo "codigoTarefa" ?>"<?php
+    if ($filterfield == "codigoTarefa") {
         echo "selected";
-    } ?>><?php echo htmlspecialchars("Codigo") ?></option>
-                        <option value="<?php echo "lp_codigoTarefaStatus" ?>"<?php if ($filterfield == "lp_codigoTarefaStatus") {
-        echo "selected";
-    } ?>><?php echo htmlspecialchars("Status") ?></option>
-                        <option value="<?php echo "dataInicio" ?>"<?php if ($filterfield == "dataInicio") {
-        echo "selected";
-    } ?>><?php echo htmlspecialchars("Data de Inicio") ?></option>
-                        <option value="<?php echo "horaInicial" ?>"<?php if ($filterfield == "horaInicial") {
-        echo "selected";
-    } ?>><?php echo htmlspecialchars("Hora de Inicio") ?></option>
-                        <option value="<?php echo "dataLimite" ?>"<?php if ($filterfield == "dataLimite") {
-        echo "selected";
-    } ?>><?php echo htmlspecialchars("Data Limite") ?></option>
-                        <option value="<?php echo "horaLimite" ?>"<?php if ($filterfield == "horaLimite") {
-        echo "selected";
-    } ?>><?php echo htmlspecialchars("Hora Limite") ?></option>
-                        <option value="<?php echo "titulo" ?>"<?php if ($filterfield == "titulo") {
-        echo "selected";
-    } ?>><?php echo htmlspecialchars("Titulo") ?></option>
-                        <option value="<?php echo "descricao" ?>"<?php if ($filterfield == "descricao") {
-        echo "selected";
-    } ?>><?php echo htmlspecialchars("Descricao") ?></option>
-                        <option value="<?php echo "lp_codigoTarefaPrioridade" ?>"<?php if ($filterfield == "lp_codigoTarefaPrioridade") {
-        echo "selected";
-    } ?>><?php echo htmlspecialchars("Prioridade") ?></option>
-                        <option value="<?php echo "datahoracriacao" ?>"<?php if ($filterfield == "datahoracriacao") {
-        echo "selected";
-    } ?>><?php echo htmlspecialchars("Criado em") ?></option>
+    }
+    ?>><?php echo htmlspecialchars("Código") ?></option>
+                        <option value="<?php echo "lp_codigoTarefaStatus" ?>"<?php
+                            if ($filterfield == "lp_codigoTarefaStatus") {
+                                echo "selected";
+                            }
+    ?>><?php echo htmlspecialchars("Status") ?></option>
+                        <option value="<?php echo "dataInicio" ?>"<?php
+                    if ($filterfield == "dataInicio") {
+                        echo "selected";
+                    }
+    ?>><?php echo htmlspecialchars("Data de Inicio") ?></option>
+                        <option value="<?php echo "horaInicial" ?>"<?php
+                            if ($filterfield == "horaInicial") {
+                                echo "selected";
+                            }
+                            ?>><?php echo htmlspecialchars("Hora de Inicio") ?></option>
+                        <option value="<?php echo "dataLimite" ?>"<?php
+                            if ($filterfield == "dataLimite") {
+                                echo "selected";
+                            }
+    ?>><?php echo htmlspecialchars("Data Limite") ?></option>
+                        <option value="<?php echo "horaLimite" ?>"<?php
+                    if ($filterfield == "horaLimite") {
+                        echo "selected";
+                    }
+    ?>><?php echo htmlspecialchars("Hora Limite") ?></option>
+                        <option value="<?php echo "titulo" ?>"<?php
+                            if ($filterfield == "titulo") {
+                                echo "selected";
+                            }
+                            ?>><?php echo htmlspecialchars("Titulo") ?></option>
+                        <option value="<?php echo "descricao" ?>"<?php
+                            if ($filterfield == "descricao") {
+                                echo "selected";
+                            }
+                            ?>><?php echo htmlspecialchars("Descricao") ?></option>
+                        <option value="<?php echo "lp_codigoTarefaPrioridade" ?>"<?php
+                            if ($filterfield == "lp_codigoTarefaPrioridade") {
+                                echo "selected";
+                            }
+                            ?>><?php echo htmlspecialchars("Prioridade") ?></option>
+                        <option value="<?php echo "datahoracriacao" ?>"<?php
+                            if ($filterfield == "datahoracriacao") {
+                                echo "selected";
+                            }
+                            ?>><?php echo htmlspecialchars("Criado em") ?></option>
                     </select></td>
                 <td><input type="checkbox" name="wholeonly"<?php echo $checkstr ?>>Coincidir palavras completas</td>
                 </td></tr>
@@ -314,39 +334,39 @@ function showrow($row, $recid) {
             <td class="dr"><?php echo htmlspecialchars($row["datahoracriacao"]) ?></td>
         </tr>
     </table>
-<?php } ?>
+                <?php } ?>
 
-<?php
+                <?php
 
-function showroweditor($row, $iseditmode) {
-    global $conn;
-    ?>
+                function showroweditor($row, $iseditmode) {
+                    global $conn;
+                    ?>
     <table class="tbl" border="0" cellspacing="1" cellpadding="5"width="50%">
         <tr>
             <td class="hr"><?php echo htmlspecialchars("Status") . "&nbsp;" ?></td>
             <td class="dr"><select name="codigoTarefaStatus">
-                    <?php
-                    $sql = "select `codigoTarefaStatus`, `descricao` from `tarefastatus`";
-                    $res = mysql_query($sql, $conn) or die(mysql_error());
+    <?php
+    $sql = "select `codigoTarefaStatus`, `descricao` from `tarefastatus`";
+    $res = mysql_query($sql, $conn) or die(mysql_error());
 
-                    while ($lp_row = mysql_fetch_assoc($res)) {
-                        $val = $lp_row["codigoTarefaStatus"];
-                        $caption = $lp_row["descricao"];
-                        if ($row["codigoTarefaStatus"] == $val) {
-                            $selstr = " selected";
-                        } else {
-                            $selstr = "";
-                        }
-                        ?><option value="<?php echo $val ?>"<?php echo $selstr ?>><?php echo $caption ?></option>
+    while ($lp_row = mysql_fetch_assoc($res)) {
+        $val = $lp_row["codigoTarefaStatus"];
+        $caption = $lp_row["descricao"];
+        if ($row["codigoTarefaStatus"] == $val) {
+            $selstr = " selected";
+        } else {
+            $selstr = "";
+        }
+        ?><option value="<?php echo $val ?>"<?php echo $selstr ?>><?php echo $caption ?></option>
     <?php } ?></select>
             </td>
         </tr>
         <tr>
-            <td class="hr"><?php echo htmlspecialchars("Data de Inï¿½cio") . "&nbsp;" ?></td>
+            <td class="hr"><?php echo htmlspecialchars("Data de Início") . "&nbsp;" ?></td>
             <td class="dr"><input type="text" name="dataInicio" value="<?php echo str_replace('"', '&quot;', trim($row["dataInicio"])) ?>"></td>
         </tr>
         <tr>
-            <td class="hr"><?php echo htmlspecialchars("Hora de Inï¿½cio") . "&nbsp;" ?></td>
+            <td class="hr"><?php echo htmlspecialchars("Hora de Início") . "&nbsp;" ?></td>
             <td class="dr"><input type="text" name="horaInicial" value="<?php echo str_replace('"', '&quot;', trim($row["horaInicial"])) ?>"></td>
         </tr>
         <tr>
@@ -358,30 +378,30 @@ function showroweditor($row, $iseditmode) {
             <td class="dr"><input type="text" name="horaLimite" value="<?php echo str_replace('"', '&quot;', trim($row["horaLimite"])) ?>"></td>
         </tr>
         <tr>
-            <td class="hr"><?php echo htmlspecialchars("Tï¿½tulo") . "&nbsp;" ?></td>
+            <td class="hr"><?php echo htmlspecialchars("Título") . "&nbsp;" ?></td>
             <td class="dr"><input type="text" name="titulo" value="<?php echo str_replace('"', '&quot;', trim($row["titulo"])) ?>"></td>
         </tr>
         <tr>
-            <td class="hr"><?php echo htmlspecialchars("Descriï¿½ï¿½o") . "&nbsp;" ?></td>
+            <td class="hr"><?php echo htmlspecialchars("Descrição") . "&nbsp;" ?></td>
             <td class="dr"><input type="text" name="descricao" maxlength="50" value="<?php echo str_replace('"', '&quot;', trim($row["descricao"])) ?>"></td>
         </tr>
         <tr>
             <td class="hr"><?php echo htmlspecialchars("Prioridade") . "&nbsp;" ?></td>
             <td class="dr"><select name="codigoTarefaPrioridade">
-            <?php
-            $sql = "select `codigoTarefaPrioridade`, `descricao` from `tarefaprioridade`";
-            $res = mysql_query($sql, $conn) or die(mysql_error());
+    <?php
+    $sql = "select `codigoTarefaPrioridade`, `descricao` from `tarefaprioridade`";
+    $res = mysql_query($sql, $conn) or die(mysql_error());
 
-            while ($lp_row = mysql_fetch_assoc($res)) {
-                $val = $lp_row["codigoTarefaPrioridade"];
-                $caption = $lp_row["descricao"];
-                if ($row["codigoTarefaPrioridade"] == $val) {
-                    $selstr = " selected";
-                } else {
-                    $selstr = "";
-                }
-                ?><option value="<?php echo $val ?>"<?php echo $selstr ?>><?php echo $caption ?></option>
-    <?php } ?></select>
+    while ($lp_row = mysql_fetch_assoc($res)) {
+        $val = $lp_row["codigoTarefaPrioridade"];
+        $caption = $lp_row["descricao"];
+        if ($row["codigoTarefaPrioridade"] == $val) {
+            $selstr = " selected";
+        } else {
+            $selstr = "";
+        }
+        ?><option value="<?php echo $val ?>"<?php echo $selstr ?>><?php echo $caption ?></option>
+            <?php } ?></select>
             </td>
         </tr>
     </table>
@@ -394,39 +414,43 @@ function showroweditor($row, $iseditmode) {
     <table class="bd" border="0" cellspacing="1" cellpadding="4">
         <tr>
             <td><a href="tarefa.php?a=add">Inserir Registro</a>&nbsp;</td>
-    <?php if ($page > 1) { ?>
+            <?php if ($page > 1) { ?>
                 <td><a href="tarefa.php?page=<?php echo $page - 1 ?>">&lt;&lt;&nbsp;Anterior</a>&nbsp;</td>
-    <?php } ?>
-    <?php
-    global $pagerange;
+            <?php } ?>
+            <?php
+            global $pagerange;
 
-    if ($pagecount > 1) {
+            if ($pagecount > 1) {
 
-        if ($pagecount % $pagerange != 0) {
-            $rangecount = intval($pagecount / $pagerange) + 1;
-        } else {
-            $rangecount = intval($pagecount / $pagerange);
-        }
-        for ($i = 1; $i < $rangecount + 1; $i++) {
-            $startpage = (($i - 1) * $pagerange) + 1;
-            $count = min($i * $pagerange, $pagecount);
-
-            if ((($page >= $startpage) && ($page <= ($i * $pagerange)))) {
-                for ($j = $startpage; $j < $count + 1; $j++) {
-                    if ($j == $page) {
-                        ?>
-                                <td><b><?php echo $j ?></b></td>
-                        <?php } else { ?>
-                                <td><a href="tarefa.php?page=<?php echo $j ?>"><?php echo $j ?></a></td>
-                    <?php }
+                if ($pagecount % $pagerange != 0) {
+                    $rangecount = intval($pagecount / $pagerange) + 1;
+                } else {
+                    $rangecount = intval($pagecount / $pagerange);
                 }
-            } else { ?>
+                for ($i = 1; $i < $rangecount + 1; $i++) {
+                    $startpage = (($i - 1) * $pagerange) + 1;
+                    $count = min($i * $pagerange, $pagecount);
+
+                    if ((($page >= $startpage) && ($page <= ($i * $pagerange)))) {
+                        for ($j = $startpage; $j < $count + 1; $j++) {
+                            if ($j == $page) {
+                                ?>
+                                <td><b><?php echo $j ?></b></td>
+                    <?php } else { ?>
+                                <td><a href="tarefa.php?page=<?php echo $j ?>"><?php echo $j ?></a></td>
+                            <?php
+                            }
+                        }
+                    } else {
+                        ?>
                         <td><a href="tarefa.php?page=<?php echo $startpage ?>"><?php echo $startpage . "..." . $count ?></a></td>
-            <?php }
+            <?php
+            }
         }
-    } ?>
+    }
+    ?>
     <?php if ($page < $pagecount) { ?>
-                <td>&nbsp;<a href="tarefa.php?page=<?php echo $page + 1 ?>">Prï¿½ximo&nbsp;&gt;&gt;</a>&nbsp;</td>
+                <td>&nbsp;<a href="tarefa.php?page=<?php echo $page + 1 ?>">Próximo&nbsp;&gt;&gt;</a>&nbsp;</td>
     <?php } ?>
         </tr>
     </table>
@@ -438,24 +462,24 @@ function showrecnav($a, $recid, $count) {
     ?>
     <table class="bd" border="0" cellspacing="1" cellpadding="4">
         <tr>
-            <td><a href="tarefa.php">Pï¿½gina Inicial</a></td>
-    <?php if ($recid > 0) { ?>
+            <td><a href="tarefa.php">Página Inicial</a></td>
+        <?php if ($recid > 0) { ?>
                 <td><a href="tarefa.php?a=<?php echo $a ?>&recid=<?php echo $recid - 1 ?>">Registro Anterior</a></td>
-    <?php } if ($recid < $count - 1) { ?>
-                <td><a href="tarefa.php?a=<?php echo $a ?>&recid=<?php echo $recid + 1 ?>">Prï¿½ximo Registro</a></td>
-    <?php } ?>
+        <?php } if ($recid < $count - 1) { ?>
+                <td><a href="tarefa.php?a=<?php echo $a ?>&recid=<?php echo $recid + 1 ?>">Próximo Registro</a></td>
+        <?php } ?>
         </tr>
     </table>
     <hr size="1" noshade>
-<?php } ?>
+    <?php } ?>
 
-<?php
+    <?php
 
-function addrec() {
-    ?>
+    function addrec() {
+        ?>
     <table class="bd" border="0" cellspacing="1" cellpadding="4">
         <tr>
-            <td><a href="tarefa.php">Pï¿½gina Inicial</a></td>
+            <td><a href="tarefa.php">Página Inicial</a></td>
         </tr>
     </table>
     <hr size="1" noshade>

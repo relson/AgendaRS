@@ -26,7 +26,7 @@ if (!isset($filterfield) && isset($_SESSION["filter_field"]))
 <html>
     <head>
         <title>AgendaRS - [Contato]</title>
-        <meta name="generator" http-equiv="content-type" content="text/html">
+        <meta name="generator" http-equiv="content-type" content="text/html" charset="ISO-8859-1">
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
@@ -178,15 +178,21 @@ function select() {
                 <td><input type="text" name="filter" value="<?php echo $filter ?>"></td>
                 <td><select name="filter_field">
                         <option value="">Todos os Campos</option>
-                        <option value="<?php echo "codigoContato" ?>"<?php if ($filterfield == "codigoContato") {
+                        <option value="<?php echo "codigoContato" ?>"<?php
+    if ($filterfield == "codigoContato") {
         echo "selected";
-    } ?>><?php echo htmlspecialchars("Codigo") ?></option>
-                        <option value="<?php echo "nome" ?>"<?php if ($filterfield == "nome") {
-        echo "selected";
-    } ?>><?php echo htmlspecialchars("Nome") ?></option>
-                        <option value="<?php echo "sobrenome" ?>"<?php if ($filterfield == "sobrenome") {
-        echo "selected";
-    } ?>><?php echo htmlspecialchars("Sobrenome") ?></option>
+    }
+    ?>><?php echo htmlspecialchars("Código") ?></option>
+                        <option value="<?php echo "nome" ?>"<?php
+                            if ($filterfield == "nome") {
+                                echo "selected";
+                            }
+    ?>><?php echo htmlspecialchars("Nome") ?></option>
+                        <option value="<?php echo "sobrenome" ?>"<?php
+                            if ($filterfield == "sobrenome") {
+                                echo "selected";
+                            }
+                            ?>><?php echo htmlspecialchars("Sobrenome") ?></option>
                     </select></td>
                 <td><input type="checkbox" name="wholeonly"<?php echo $checkstr ?>>Coincidir palavras completas</td>
                 </td></tr>
@@ -198,25 +204,25 @@ function select() {
         </table>
     </form>
     <hr size="1" noshade>
-        <?php showpagenav($page, $pagecount); ?>
+    <?php showpagenav($page, $pagecount); ?>
     <br>
     <table class="tbl" border="0" cellspacing="1" cellpadding="5"width="100%">
         <tr>
             <td class="hr">&nbsp;</td>
             <td class="hr">&nbsp;</td>
             <td class="hr">&nbsp;</td>
-            <td class="hr"><a class="hr" href="contato.php?order=<?php echo "codigoContato" ?>&type=<?php echo $ordtypestr ?>"><?php echo htmlspecialchars("Codigo") ?></a></td>
+            <td class="hr"><a class="hr" href="contato.php?order=<?php echo "codigoContato" ?>&type=<?php echo $ordtypestr ?>"><?php echo htmlspecialchars("Código") ?></a></td>
             <td class="hr"><a class="hr" href="contato.php?order=<?php echo "nome" ?>&type=<?php echo $ordtypestr ?>"><?php echo htmlspecialchars("Nome") ?></a></td>
             <td class="hr"><a class="hr" href="contato.php?order=<?php echo "sobrenome" ?>&type=<?php echo $ordtypestr ?>"><?php echo htmlspecialchars("Sobrenome") ?></a></td>
         </tr>
-    <?php
-    for ($i = $startrec; $i < $reccount; $i++) {
-        $row = mysql_fetch_assoc($res);
-        $style = "dr";
-        if ($i % 2 != 0) {
-            $style = "sr";
-        }
-        ?>
+        <?php
+        for ($i = $startrec; $i < $reccount; $i++) {
+            $row = mysql_fetch_assoc($res);
+            $style = "dr";
+            if ($i % 2 != 0) {
+                $style = "sr";
+            }
+            ?>
             <tr>
                 <td class="<?php echo $style ?>"><a href="contato.php?a=view&recid=<?php echo $i ?>">Ver</a></td>
                 <td class="<?php echo $style ?>"><a href="contato.php?a=edit&recid=<?php echo $i ?>">Editar</a></td>
@@ -240,7 +246,7 @@ function showrow($row, $recid) {
     ?>
     <table class="tbl" border="0" cellspacing="1" cellpadding="5"width="50%">
         <tr>
-            <td class="hr"><?php echo htmlspecialchars("Codigo") . "&nbsp;" ?></td>
+            <td class="hr"><?php echo htmlspecialchars("Código") . "&nbsp;" ?></td>
             <td class="dr"><?php echo htmlspecialchars($row["codigoContato"]) ?></td>
         </tr>
         <tr>
@@ -252,13 +258,13 @@ function showrow($row, $recid) {
             <td class="dr"><?php echo htmlspecialchars($row["sobrenome"]) ?></td>
         </tr>
     </table>
-        <?php } ?>
+<?php } ?>
 
-        <?php
+<?php
 
-        function showroweditor($row, $iseditmode) {
-            global $conn;
-            ?>
+function showroweditor($row, $iseditmode) {
+    global $conn;
+    ?>
     <table class="tbl" border="0" cellspacing="1" cellpadding="5"width="50%">
         <tr>
             <td class="hr"><?php echo htmlspecialchars("Nome") . "&nbsp;" ?></td>
@@ -269,7 +275,7 @@ function showrow($row, $recid) {
             <td class="dr"><textarea cols="35" rows="4" name="sobrenome" maxlength="80"><?php echo str_replace('"', '&quot;', trim($row["sobrenome"])) ?></textarea></td>
         </tr>
     </table>
-        <?php } ?>
+<?php } ?>
 
         <?php
 
@@ -280,53 +286,57 @@ function showrow($row, $recid) {
             <td><a href="contato.php?a=add">Inserir Registro</a>&nbsp;</td>
             <?php if ($page > 1) { ?>
                 <td><a href="contato.php?page=<?php echo $page - 1 ?>">&lt;&lt;&nbsp;Anterior</a>&nbsp;</td>
-    <?php } ?>
-    <?php
-    global $pagerange;
+            <?php } ?>
+            <?php
+            global $pagerange;
 
-    if ($pagecount > 1) {
+            if ($pagecount > 1) {
 
-        if ($pagecount % $pagerange != 0) {
-            $rangecount = intval($pagecount / $pagerange) + 1;
-        } else {
-            $rangecount = intval($pagecount / $pagerange);
-        }
-        for ($i = 1; $i < $rangecount + 1; $i++) {
-            $startpage = (($i - 1) * $pagerange) + 1;
-            $count = min($i * $pagerange, $pagecount);
-
-            if ((($page >= $startpage) && ($page <= ($i * $pagerange)))) {
-                for ($j = $startpage; $j < $count + 1; $j++) {
-                    if ($j == $page) {
-                        ?>
-                                <td><b><?php echo $j ?></b></td>
-                    <?php } else { ?>
-                                <td><a href="contato.php?page=<?php echo $j ?>"><?php echo $j ?></a></td>
-                    <?php }
+                if ($pagecount % $pagerange != 0) {
+                    $rangecount = intval($pagecount / $pagerange) + 1;
+                } else {
+                    $rangecount = intval($pagecount / $pagerange);
                 }
-            } else { ?>
+                for ($i = 1; $i < $rangecount + 1; $i++) {
+                    $startpage = (($i - 1) * $pagerange) + 1;
+                    $count = min($i * $pagerange, $pagecount);
+
+                    if ((($page >= $startpage) && ($page <= ($i * $pagerange)))) {
+                        for ($j = $startpage; $j < $count + 1; $j++) {
+                            if ($j == $page) {
+                                ?>
+                                <td><b><?php echo $j ?></b></td>
+                            <?php } else { ?>
+                                <td><a href="contato.php?page=<?php echo $j ?>"><?php echo $j ?></a></td>
+                            <?php
+                            }
+                        }
+                    } else {
+                        ?>
                         <td><a href="contato.php?page=<?php echo $startpage ?>"><?php echo $startpage . "..." . $count ?></a></td>
-            <?php }
+            <?php
+            }
         }
-    } ?>
-        <?php if ($page < $pagecount) { ?>
-                        <td>&nbsp;<a href="contato.php?page=<?php echo $page + 1 ?>">Pr&oacute;ximo&nbsp;&gt;&gt;</a>&nbsp;</td>
-        <?php } ?>
+    }
+    ?>
+    <?php if ($page < $pagecount) { ?>
+                <td>&nbsp;<a href="contato.php?page=<?php echo $page + 1 ?>">Pr&oacute;ximo&nbsp;&gt;&gt;</a>&nbsp;</td>
+    <?php } ?>
         </tr>
     </table>
-    <?php } ?>
+        <?php } ?>
 
-    <?php
+        <?php
 
-    function showrecnav($a, $recid, $count) {
-        ?>
+        function showrecnav($a, $recid, $count) {
+            ?>
     <table class="bd" border="0" cellspacing="1" cellpadding="4">
         <tr>
-            <td><a href="contato.php">Pagina Inicial</a></td>
+            <td><a href="contato.php">Página Inicial</a></td>
     <?php if ($recid > 0) { ?>
                 <td><a href="contato.php?a=<?php echo $a ?>&recid=<?php echo $recid - 1 ?>">Registro Anterior</a></td>
     <?php } if ($recid < $count - 1) { ?>
-                <td><a href="contato.php?a=<?php echo $a ?>&recid=<?php echo $recid + 1 ?>">Proximo Registro</a></td>
+                <td><a href="contato.php?a=<?php echo $a ?>&recid=<?php echo $recid + 1 ?>">Próximo Registro</a></td>
     <?php } ?>
         </tr>
     </table>
@@ -339,7 +349,7 @@ function addrec() {
     ?>
     <table class="bd" border="0" cellspacing="1" cellpadding="4">
         <tr>
-            <td><a href="contato.php">Pagina Inicial</a></td>
+            <td><a href="contato.php">Página Inicial</a></td>
         </tr>
     </table>
     <hr size="1" noshade>
@@ -356,15 +366,15 @@ function addrec() {
     </form>
 <?php } ?>
 
-    <?php
+<?php
 
-    function viewrec($recid) {
-        $res = sql_select();
-        $count = sql_getrecordcount();
-        mysql_data_seek($res, $recid);
-        $row = mysql_fetch_assoc($res);
-        showrecnav("view", $recid, $count);
-        ?>
+function viewrec($recid) {
+    $res = sql_select();
+    $count = sql_getrecordcount();
+    mysql_data_seek($res, $recid);
+    $row = mysql_fetch_assoc($res);
+    showrecnav("view", $recid, $count);
+    ?>
     <br>
     <?php showrow($row, $recid) ?>
     <br>

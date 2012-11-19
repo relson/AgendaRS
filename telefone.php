@@ -26,7 +26,7 @@ if (!isset($filterfield) && isset($_SESSION["filter_field"]))
 <html>
     <head>
         <title>AgendaRS - [Telefone]</title>
-        <meta name="generator" http-equiv="content-type" content="text/html">
+        <meta name="generator" http-equiv="content-type" content="text/html" charset="ISO-8859-1">
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
@@ -182,7 +182,7 @@ function select() {
     if ($filterfield == "codigoTelefone") {
         echo "selected";
     }
-    ?>><?php echo htmlspecialchars("Codigo") ?></option>
+    ?>><?php echo htmlspecialchars("Código") ?></option>
                         <option value="<?php echo "lp_codigoTipoTelefone" ?>"<?php
                             if ($filterfield == "lp_codigoTipoTelefone") {
                                 echo "selected";
@@ -192,7 +192,7 @@ function select() {
                             if ($filterfield == "numero") {
                                 echo "selected";
                             }
-                            ?>><?php echo htmlspecialchars("Numero") ?></option>
+                            ?>><?php echo htmlspecialchars("Número") ?></option>
                     </select></td>
                 <td><input type="checkbox" name="wholeonly"<?php echo $checkstr ?>>Coincidir palavras completas</td>
                 </td></tr>
@@ -211,9 +211,9 @@ function select() {
             <td class="hr">&nbsp;</td>
             <td class="hr">&nbsp;</td>
             <td class="hr">&nbsp;</td>
-            <td class="hr"><a class="hr" href="telefone.php?order=<?php echo "codigoTelefone" ?>&type=<?php echo $ordtypestr ?>"><?php echo htmlspecialchars("Codigo") ?></a></td>
+            <td class="hr"><a class="hr" href="telefone.php?order=<?php echo "codigoTelefone" ?>&type=<?php echo $ordtypestr ?>"><?php echo htmlspecialchars("Código") ?></a></td>
             <td class="hr"><a class="hr" href="telefone.php?order=<?php echo "lp_codigoTipoTelefone" ?>&type=<?php echo $ordtypestr ?>"><?php echo htmlspecialchars("Tipo") ?></a></td>
-            <td class="hr"><a class="hr" href="telefone.php?order=<?php echo "numero" ?>&type=<?php echo $ordtypestr ?>"><?php echo htmlspecialchars("Numero") ?></a></td>
+            <td class="hr"><a class="hr" href="telefone.php?order=<?php echo "numero" ?>&type=<?php echo $ordtypestr ?>"><?php echo htmlspecialchars("Número") ?></a></td>
         </tr>
         <?php
         for ($i = $startrec; $i < $reccount; $i++) {
@@ -254,7 +254,7 @@ function showrow($row, $recid) {
             <td class="dr"><?php echo htmlspecialchars($row["lp_codigoTipoTelefone"]) ?></td>
         </tr>
         <tr>
-            <td class="hr"><?php echo htmlspecialchars("Numero") . "&nbsp;" ?></td>
+            <td class="hr"><?php echo htmlspecialchars("Número") . "&nbsp;" ?></td>
             <td class="dr"><?php echo htmlspecialchars($row["numero"]) ?></td>
         </tr>
     </table>
@@ -286,7 +286,7 @@ function showroweditor($row, $iseditmode) {
             </td>
         </tr>
         <tr>
-            <td class="hr"><?php echo htmlspecialchars("Numero") . "&nbsp;" ?></td>
+            <td class="hr"><?php echo htmlspecialchars("Número") . "&nbsp;" ?></td>
             <td class="dr"><input type="text" name="numero" value="<?php echo str_replace('"', '&quot;', trim($row["numero"])) ?>"></td>
         </tr>
     </table>
@@ -335,7 +335,7 @@ function showroweditor($row, $iseditmode) {
     }
     ?>
     <?php if ($page < $pagecount) { ?>
-                <td>&nbsp;<a href="telefone.php?page=<?php echo $page + 1 ?>">Prï¿½ximo&nbsp;&gt;&gt;</a>&nbsp;</td>
+                <td>&nbsp;<a href="telefone.php?page=<?php echo $page + 1 ?>">Próximo&nbsp;&gt;&gt;</a>&nbsp;</td>
     <?php } ?>
         </tr>
     </table>
@@ -347,11 +347,11 @@ function showroweditor($row, $iseditmode) {
             ?>
     <table class="bd" border="0" cellspacing="1" cellpadding="4">
         <tr>
-            <td><a href="telefone.php">Pï¿½gina Inicial</a></td>
+            <td><a href="telefone.php">Página Inicial</a></td>
     <?php if ($recid > 0) { ?>
                 <td><a href="telefone.php?a=<?php echo $a ?>&recid=<?php echo $recid - 1 ?>">Registro Anterior</a></td>
     <?php } if ($recid < $count - 1) { ?>
-                <td><a href="telefone.php?a=<?php echo $a ?>&recid=<?php echo $recid + 1 ?>">Prï¿½ximo Registro</a></td>
+                <td><a href="telefone.php?a=<?php echo $a ?>&recid=<?php echo $recid + 1 ?>">Próximo Registro</a></td>
     <?php } ?>
         </tr>
     </table>
@@ -364,7 +364,7 @@ function addrec() {
     ?>
     <table class="bd" border="0" cellspacing="1" cellpadding="4">
         <tr>
-            <td><a href="telefone.php">Pï¿½gina Inicial</a></td>
+            <td><a href="telefone.php">Página Inicial</a></td>
         </tr>
     </table>
     <hr size="1" noshade>
