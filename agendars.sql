@@ -17,31 +17,50 @@ USE `agendars`;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+
 --
--- Table structure for table `contatotelefones`
+-- Table structure for table `contato`
 --
 
-DROP TABLE IF EXISTS `contatotelefones`;
+DROP TABLE IF EXISTS `contato`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `contatotelefones` (
-  `codigoContato` int(10) DEFAULT NULL,
-  `codigoTelefone` int(10) DEFAULT NULL,
-  UNIQUE KEY `pmkContatoTelefones` (`codigoContato`,`codigoTelefone`),
-  KEY `FK_contatotelefones_codigoTelefone` (`codigoTelefone`),
-  CONSTRAINT `FK_contatotelefones_codigoContato` FOREIGN KEY (`codigoContato`) REFERENCES `contato` (`codigoContato`),
-  CONSTRAINT `FK_contatotelefones_codigoTelefone` FOREIGN KEY (`codigoTelefone`) REFERENCES `telefone` (`codigoTelefone`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `contato` (
+  `codigoContato` int(10) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(80) DEFAULT NULL,
+  `sobrenome` varchar(150) DEFAULT NULL,
+  PRIMARY KEY (`codigoContato`),
+  UNIQUE KEY `pmkCodigoContato` (`codigoContato`)
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `contatotelefones`
+-- Dumping data for table `contato`
 --
 
-LOCK TABLES `contatotelefones` WRITE;
-/*!40000 ALTER TABLE `contatotelefones` DISABLE KEYS */;
-/*!40000 ALTER TABLE `contatotelefones` ENABLE KEYS */;
+LOCK TABLES `contato` WRITE;
+/*!40000 ALTER TABLE `contato` DISABLE KEYS */;
+/*!40000 ALTER TABLE `contato` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `telefone`
+--
+
+DROP TABLE IF EXISTS `telefone`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `telefone` (
+  `codigoTelefone` int(10) NOT NULL AUTO_INCREMENT,
+  `codigoTipoTelefone` int(10) DEFAULT NULL,
+  `numero` varchar(14) DEFAULT NULL,
+  PRIMARY KEY (`codigoTelefone`),
+  UNIQUE KEY `pmkTelefone` (`codigoTelefone`),
+  UNIQUE KEY `idxNumero` (`numero`),
+  KEY `FK_telefone_codigoTipoTelefone` (`codigoTipoTelefone`),
+  CONSTRAINT `FK_telefone_codigoTipoTelefone` FOREIGN KEY (`codigoTipoTelefone`) REFERENCES `tipotelefone` (`codigoTipoTelefone`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `tipotelefone`
@@ -66,6 +85,42 @@ LOCK TABLES `tipotelefone` WRITE;
 /*!40000 ALTER TABLE `tipotelefone` DISABLE KEYS */;
 INSERT INTO `tipotelefone` VALUES (1,'Celular'),(2,'Residencial'),(3,'Comercial'),(4,'Recado');
 /*!40000 ALTER TABLE `tipotelefone` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `telefone`
+--
+
+LOCK TABLES `telefone` WRITE;
+/*!40000 ALTER TABLE `telefone` DISABLE KEYS */;
+/*!40000 ALTER TABLE `telefone` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+--
+-- Table structure for table `contatotelefones`
+--
+
+DROP TABLE IF EXISTS `contatotelefones`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `contatotelefones` (
+  `codigoContato` int(10) DEFAULT NULL,
+  `codigoTelefone` int(10) DEFAULT NULL,
+  UNIQUE KEY `pmkContatoTelefones` (`codigoContato`,`codigoTelefone`),
+  KEY `FK_contatotelefones_codigoTelefone` (`codigoTelefone`),
+  CONSTRAINT `FK_contatotelefones_codigoContato` FOREIGN KEY (`codigoContato`) REFERENCES `contato` (`codigoContato`),
+  CONSTRAINT `FK_contatotelefones_codigoTelefone` FOREIGN KEY (`codigoTelefone`) REFERENCES `telefone` (`codigoTelefone`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `contatotelefones`
+--
+
+LOCK TABLES `contatotelefones` WRITE;
+/*!40000 ALTER TABLE `contatotelefones` DISABLE KEYS */;
+/*!40000 ALTER TABLE `contatotelefones` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -117,31 +172,6 @@ LOCK TABLES `tipocontato` WRITE;
 /*!40000 ALTER TABLE `tipocontato` DISABLE KEYS */;
 INSERT INTO `tipocontato` VALUES (1,'Familiar'),(2,'Profissional');
 /*!40000 ALTER TABLE `tipocontato` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `contato`
---
-
-DROP TABLE IF EXISTS `contato`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `contato` (
-  `codigoContato` int(10) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(80) DEFAULT NULL,
-  `sobrenome` varchar(150) DEFAULT NULL,
-  PRIMARY KEY (`codigoContato`),
-  UNIQUE KEY `pmkCodigoContato` (`codigoContato`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `contato`
---
-
-LOCK TABLES `contato` WRITE;
-/*!40000 ALTER TABLE `contato` DISABLE KEYS */;
-/*!40000 ALTER TABLE `contato` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -226,7 +256,7 @@ CREATE TABLE `tarefastatus` (
 
 LOCK TABLES `tarefastatus` WRITE;
 /*!40000 ALTER TABLE `tarefastatus` DISABLE KEYS */;
-INSERT INTO `tarefastatus` VALUES (1,'NÃ£o Iniciada'),(2,'Em Andamento'),(3,'Pendente'),(4,'ConcluÃ­da'),(5,'Cancelada');
+INSERT INTO `tarefastatus` VALUES (1,'Não Iniciada'),(2,'Em Andamento'),(3,'Pendente'),(4,'Concluída'),(5,'Cancelada');
 /*!40000 ALTER TABLE `tarefastatus` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -254,34 +284,6 @@ CREATE TABLE `contatoemails` (
 LOCK TABLES `contatoemails` WRITE;
 /*!40000 ALTER TABLE `contatoemails` DISABLE KEYS */;
 /*!40000 ALTER TABLE `contatoemails` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `telefone`
---
-
-DROP TABLE IF EXISTS `telefone`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `telefone` (
-  `codigoTelefone` int(10) NOT NULL AUTO_INCREMENT,
-  `codigoTipoTelefone` int(10) DEFAULT NULL,
-  `numero` varchar(14) DEFAULT NULL,
-  PRIMARY KEY (`codigoTelefone`),
-  UNIQUE KEY `pmkTelefone` (`codigoTelefone`),
-  UNIQUE KEY `idxNumero` (`numero`),
-  KEY `FK_telefone_codigoTipoTelefone` (`codigoTipoTelefone`),
-  CONSTRAINT `FK_telefone_codigoTipoTelefone` FOREIGN KEY (`codigoTipoTelefone`) REFERENCES `tipotelefone` (`codigoTipoTelefone`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `telefone`
---
-
-LOCK TABLES `telefone` WRITE;
-/*!40000 ALTER TABLE `telefone` DISABLE KEYS */;
-/*!40000 ALTER TABLE `telefone` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
