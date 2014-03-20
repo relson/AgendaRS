@@ -43,8 +43,8 @@ public class DbConnect {
 		
 	Class.forName("com.mysql.jdbc.Driver").newInstance();
 	rowSet.setUrl("jdbc:mysql://localhost/agendr");
-	rowSet.setUsername("site");
-	rowSet.setPassword("123456");       
+	rowSet.setUsername("root");
+	rowSet.setPassword("secreto");       
 			
 	
 	return rowSet;	
@@ -59,8 +59,8 @@ public class DbConnect {
 
 		Class.forName("org.postgresql.Driver").newInstance();
 		rowSet.setUrl("jdbc:postgresql://localhost/agendr");
-		rowSet.setUsername("bach");
-		rowSet.setPassword("bach");       
+		rowSet.setUsername("root");
+		rowSet.setPassword("secreto");       
 		return rowSet;	
 }
 	
