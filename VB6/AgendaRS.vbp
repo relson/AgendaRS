@@ -1,6 +1,6 @@
 Type=Exe
-Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\WINDOWS\SYSTEM32\STDOLE2.TLB#OLE Automation
-Reference=*\G{EF53050B-882E-4776-B643-EDA472E8E3F2}#2.7#0#..\..\..\..\Arquivos de programas\Arquivos comuns\System\ado\msado27.tlb#Microsoft ActiveX Data Objects 2.7 Library
+Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\..\..\WINDOWS\SYSTEM32\STDOLE2.TLB#OLE Automation
+Reference=*\G{EF53050B-882E-4776-B643-EDA472E8E3F2}#2.7#0#..\..\..\..\..\..\Arquivos de programas\Arquivos comuns\System\ado\msado27.tlb#Microsoft ActiveX Data Objects 2.7 Library
 Form=Forms\mdiMain.frm
 Module=mdlUtilsCtrls; Modules\mdlUtilsCtrls.bas
 Form=Forms\frmCadastroContato.frm
@@ -16,7 +16,7 @@ Form=Forms\frmPesquisa.frm
 Form=Forms\frmReclassificarTipo.frm
 Module=mdlTarefa; Modules\mdlTarefa.bas
 Form=Forms\frmTarefa.frm
-Reference=*\G{00025E01-0000-0000-C000-000000000046}#4.0#0#..\..\..\..\Arquivos de programas\Arquivos comuns\Microsoft Shared\DAO\DAO350.DLL#Microsoft DAO 3.51 Object Library
+Reference=*\G{00025E01-0000-0000-C000-000000000046}#4.0#0#..\..\..\..\..\..\Arquivos de programas\Arquivos comuns\Microsoft Shared\DAO\DAO350.DLL#Microsoft DAO 3.51 Object Library
 Form=Forms\frmCadastroTarefa.frm
 Module=mdlAcessoDados; Modules\mdlAcessoDados.bas
 Module=mdlUtils; Modules\mdlUtils.bas

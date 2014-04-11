@@ -126,11 +126,11 @@ End Sub
 
 Public Sub reconectar()
     
+    On Error GoTo Trata_Erro
+    
     Dim strCn As String
     Dim strCaminho As String
-    
-    
-    
+        
     strCaminho = GetSetting(App.EXEName, "preferencias", "caminho_banco_dados", App.Path & "\db\db.mdb")
         
     If Dir(strCaminho) = vbNullString Then
@@ -140,7 +140,6 @@ Public Sub reconectar()
         frmPreferencias.Show vbModal
         
     End If
-        
     
     strCn = "Provider=Microsoft.Jet.OLEDB.4.0;" & _
             "Data Source=" & strCaminho & ";" & _
