@@ -42,10 +42,9 @@ public class MainMenuBar extends JMenuBar {
 	
 	/**
 	 * Configura o menu e sub menus do menu Arquivo
-	 * @author Sebastião Relson
+	 * @author SebastiÃ£o Relson
 	 */
 	private void configurarArquivoMenu() {
-		
 		ImageIcon sairIcon = new ImageIcon(getClass().getResource("sair16.png"));
 		
 		sairMenuItem = new JMenuItem("Sair", sairIcon);
@@ -58,8 +57,8 @@ public class MainMenuBar extends JMenuBar {
 		
 		arquivoMenu.add(new JMenuItem("Contatos", new ImageIcon(getClass().getResource("contato16.png"))));
 		arquivoMenu.add(new JMenuItem("Tarefas", new ImageIcon(getClass().getResource("tarefa16.png"))));
-		arquivoMenu.add(new JMenuItem("Calendário", new ImageIcon(getClass().getResource("calendario16.png"))));
-		arquivoMenu.add(new JMenuItem("Anotações", new ImageIcon(getClass().getResource("anotacoes16.png"))));
+		arquivoMenu.add(new JMenuItem("CalendÃ¡rio", new ImageIcon(getClass().getResource("calendario16.png"))));
+		arquivoMenu.add(new JMenuItem("AnotaÃ§Ãµes", new ImageIcon(getClass().getResource("anotacoes16.png"))));
 		arquivoMenu.add(new JMenuItem("RSS", new ImageIcon(getClass().getResource("rss16.png"))));
 		
 		arquivoMenu.addSeparator();
@@ -69,7 +68,7 @@ public class MainMenuBar extends JMenuBar {
 		
 				
 		
-	} // fim do método configurarArquivoMenu
+	} // fim do mÃ©todo configurarArquivoMenu
 	
 	/**
 	 * Configura o menu e sub menus do menu Arquivo
@@ -97,11 +96,11 @@ public class MainMenuBar extends JMenuBar {
 		
 		editarMenu.addSeparator();
 		
-		editarMenu.add(new JMenuItem("Preferências"));
-	} // fim do método 
+		editarMenu.add(new JMenuItem("PreferÃªncias"));
+	} // fim do mÃ©todo 
 	
 	/**
-	 * ActionListener para os menuItem de edição de Tipos
+	 * ActionListener para os menuItem de ediÃ§Ã£o de Tipos
 	 */
 	private class TipoEditarMenuItemActionListener implements ActionListener{
 		public void actionPerformed(ActionEvent event) {
@@ -113,7 +112,7 @@ public class MainMenuBar extends JMenuBar {
 					new TipoJFrame(nome);					
 				}
 			} // fim do for
-		} // fim do métod actionPerformed
+		} // fim do mÃ©tod actionPerformed
 	} // fim da classe TipoEditarMenuItemActionListener
 	
 } // fim da classe

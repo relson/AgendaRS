@@ -9,7 +9,7 @@ package br.com.agendr.ad;
 
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import com.sun.rowset.CachedRowSetImpl;
+import javax.sql.rowset.CachedRowSet;
 
 
 public class DbCrud {
@@ -27,7 +27,7 @@ public class DbCrud {
 	 * @param values
 	 * @throws Exception
 	 */
-	public static void insert(CachedRowSetImpl conexao, String tableName, String[] fields, String[] values) throws Exception{
+	public static void insert(CachedRowSet conexao, String tableName, String[] fields, String[] values) throws Exception{
 		
 		
 		if(fields.length != values.length){
@@ -97,7 +97,7 @@ public class DbCrud {
 	 * @return
 	 * @throws Exception
 	 */
-	public static CachedRowSetImpl  select(CachedRowSetImpl conexao, String tableName, String[] fields, String criteria) throws Exception{
+	public static CachedRowSet  select(CachedRowSet conexao, String tableName, String[] fields, String criteria) throws Exception{
 			
 				
 		if(fields.length == 0){
@@ -158,7 +158,7 @@ public class DbCrud {
 	 * @return
 	 * @throws Exception
 	 */
-	public static CachedRowSetImpl  select(CachedRowSetImpl conexao, String tableName, String[] fields) throws Exception{
+	public static CachedRowSet  select(CachedRowSet conexao, String tableName, String[] fields) throws Exception{
 		
 		return select(conexao, tableName, fields, "");  
 	}
@@ -178,7 +178,7 @@ public class DbCrud {
 	 * @return
 	 * @throws Exception
 	 */
-	public static boolean update(CachedRowSetImpl conexao, String tableName, String[] fields, String[] values, String criteria) throws Exception{
+	public static boolean update(CachedRowSet conexao, String tableName, String[] fields, String[] values, String criteria) throws Exception{
 		
 		boolean response = false;
 		
@@ -243,7 +243,7 @@ public class DbCrud {
 	 * @return
 	 * @throws Exception
 	 */
-	public static boolean update(CachedRowSetImpl conexao, String tableName, String[] fields, String[] values) throws Exception{
+	public static boolean update(CachedRowSet conexao, String tableName, String[] fields, String[] values) throws Exception{
 		
 		return update(conexao, tableName, fields, values, "true");
 	}
@@ -253,7 +253,7 @@ public class DbCrud {
 	 * Metodo testado 
 	 */
 		
-	public static String[] getTableFields(CachedRowSetImpl conexao, String tableName)throws Exception{
+	public static String[] getTableFields(CachedRowSet conexao, String tableName)throws Exception{
 		
 		conexao.setCommand("SELECT * FROM "+tableName);
 		conexao.execute();
@@ -270,7 +270,7 @@ public class DbCrud {
 	 return names;	
 	}
 		
-	public static boolean delete(CachedRowSetImpl conexao, String tableName, String criteria) throws Exception{
+	public static boolean delete(CachedRowSet conexao, String tableName, String criteria) throws Exception{
 		
 		boolean response = false;
 		

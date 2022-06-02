@@ -10,7 +10,7 @@ import br.com.agendr.td.TelefoneDT;
 
 /**
  * Classe contatos
- * @author Sebasti„o Relson
+ * @author Sebasti√£o Relson
  * @since domingo, 18 de marco de 2007 
  */
 public class Contato extends Entidade implements Crud{
@@ -35,7 +35,7 @@ public class Contato extends Entidade implements Crud{
 		if (emails == null)
 			emails = EmailDT.getEmails(codigoContato);		
 		return emails;
-	} // fim do mÈtodo getEmails
+	} // fim do m√©todo getEmails
 	public void setEmails(Email[] emails) {		
 		this.emails = emails;
 	}
@@ -68,7 +68,7 @@ public class Contato extends Entidade implements Crud{
 			observacoes = ObservacaoDT.getObservacoes(codigoContato);
 		
 		return observacoes;
-	} // fim do mÈtodo getObsevacoes
+	} // fim do m√©todo getObsevacoes
 	
 	public void setObservacoes(Observacao[] observacoes) {
 		this.observacoes = observacoes;
@@ -125,7 +125,7 @@ public class Contato extends Entidade implements Crud{
 	/**
 	 * Retorna uma Lista separada por virgula dos Tipos do Contato
 	 * 
-	 * @author Sebasti„o Relson
+	 * @author Sebasti√£o Relson
 	 */
 	public String getListaContatoTipos()
 	{
@@ -143,7 +143,7 @@ public class Contato extends Entidade implements Crud{
 		} // fim do try
 		catch (Exception e)
 		{
-			return "Contato n‚o Classificado";
+			return "Contato n√£o Classificado";
 		}
 		lista.deleteCharAt(lista.length() -2);
 		
@@ -157,15 +157,15 @@ public class Contato extends Entidade implements Crud{
 	
 	public void novo() throws Exception{
 		ContatoDT.novo(this);		
-	} // fim do mÈtodo novo
+	} // fim do m√©todo novo
 	
 	public void excluir() {
-		// TODO Implementar mÈtodo Excluir
+		// TODO Implementar m√©todo Excluir
 		
-	} // fim do mÈtodo excluir
+	} // fim do m√©todo excluir
 	
 	public void atualizar() {
-		// TODO Implementar mÈtodo Atualizar
+		// TODO Implementar m√©todo Atualizar
 		
-	} // fim do mÈtodo atualizar
+	} // fim do m√©todo atualizar
 } // fim da classe Contato

@@ -6,7 +6,7 @@ import br.com.agendr.ad.DbConnect;
 import br.com.agendr.ad.DbCrud;
 import br.com.agendr.rn.entidades.Rss;
 
-import com.sun.rowset.CachedRowSetImpl;
+import javax.sql.rowset.CachedRowSet;
 
 
 public class RssManager {
@@ -31,14 +31,14 @@ public class RssManager {
 				
 		if(userId == 0 && url != null){
 			
-			CachedRowSetImpl rowSet = DbConnect.postgresqlConnect();
+			CachedRowSet rowSet = DbConnect.postgresqlConnect();
 			
 			if(checkRss(rowSet, titulo, url) == false)
 				DbCrud.insert(rowSet, "RSS", fields, values);
 			
 		}else if(userId > 0 && url != null){
 			
-			CachedRowSetImpl rowSet = DbConnect.mysqlConnect(); 
+			CachedRowSet rowSet = DbConnect.mysqlConnect(); 
 			
 			if(checkRss(rowSet, titulo, url) == false)
 				DbCrud.insert(rowSet, "RSS", fields, values);
@@ -54,7 +54,7 @@ public class RssManager {
 	 * @param titulo
 	 * @param url
 	 */
-	public static boolean checkRss(CachedRowSetImpl conexao, String titulo, String url)throws Exception{
+	public static boolean checkRss(CachedRowSet conexao, String titulo, String url)throws Exception{
 						
 		DbCrud.select(conexao, "RSS", DbCrud.getTableFields(conexao, "RSS"),
 				      String.format(" titulo = '%s' AND url = '%s'", titulo, url));		
@@ -72,7 +72,7 @@ public class RssManager {
 	 * @param conexao
 	 * @param codigo
 	 */
-	public static boolean configRSS(CachedRowSetImpl conexao, int codigo, Rss rss){
+	public static boolean configRSS(CachedRowSet conexao, int codigo, Rss rss){
 					
 		String[] values = {rss.getTitulo(), rss.getUrl()};
 		
@@ -95,11 +95,11 @@ public class RssManager {
 	 * @return
 	 * @throws Exception
 	 */
-	public static Rss retriveRss(CachedRowSetImpl conexao, String titulo)throws Exception{
+	public static Rss retriveRss(CachedRowSet conexao, String titulo)throws Exception{
 				
 		String[] fields = {"titulo","url"}; 
 		
-		CachedRowSetImpl rs = DbCrud.select(conexao, "RSS", fields, " titulo = "+titulo); 
+		CachedRowSet rs = DbCrud.select(conexao, "RSS", fields, " titulo = "+titulo); 
 		Rss rss = new Rss();
 		
 		rss.setTitulo(rs.getString("titulo"));

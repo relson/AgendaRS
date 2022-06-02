@@ -43,6 +43,6 @@ public class SysTrayPopupMenu extends PopupMenu{
 
 		public void actionPerformed(ActionEvent e) {
 			mainJFrame.setVisible(true);		
-		} // fim do método actionPerformed
+		} // fim do mÃ©todo actionPerformed
 	} // fim da classe interna privada AbrirActionListener
 } // fim da classe SysTrayPopupMenu

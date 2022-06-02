@@ -21,7 +21,7 @@ import br.com.agendr.rn.entidades.TipoImpl;
  * Classe para o tratamento de tipo das entidades que implementa a classe
  * abstrata Tipo
  * 
- * @author Sebasti„o Relson
+ * @author Sebasti√£o Relson
  * 
  * @since quinta-feira, 17 de Maio de 2007
  * 
@@ -32,13 +32,13 @@ public class TipoJFrame extends JFrame {
 
 	public static final long serialVersionUID = 1;
 
-	// Botıes
+	// Bot√µes
 	public AdicionarJButton adicionarJButton = new AdicionarJButton();
 	public EditarJButton editarJButton = new EditarJButton();
 	public ExcluirJButton excluirJButton = new ExcluirJButton();
 	public SairJButton sairJButton = new SairJButton();
 	
-	// Esses botıes servir„o apenas para o layout
+	// Esses bot√µes servir√ßo apenas para o layout
 	public SairJButton hideJButton[] = new SairJButton[5];
 	
 	public JList jList;
@@ -49,7 +49,7 @@ public class TipoJFrame extends JFrame {
 
 	public JPanel jPanel = new JPanel(new BorderLayout(15,15));
 
-	// Caixa para comportar os botıes de Adicionar, Editar e Excluir
+	// Caixa para comportar os bot√µes de Adicionar, Editar e Excluir
 	public JPanel direitaPainel = new JPanel(new GridLayout(9,1));
 
 	// Construtores
@@ -69,21 +69,21 @@ public class TipoJFrame extends JFrame {
 		
 		add(jScrollPane, BorderLayout.CENTER);
 
-		// configurando os botıes do lado esquerdo		
-		// bot„o adicionar
+		// configurando os bot√µes do lado esquerdo		
+		// bot√£o adicionar
 		adicionarJButton.addActionListener(new AdicionarJButtonActionListener());
 		direitaPainel.add(adicionarJButton);
 		
-		// bot„o editar
+		// bot√£o editar
 		editarJButton.addActionListener(new EditarJButtonActionListener());
 		direitaPainel.add(editarJButton);
 		
-		// bot„o excluir
+		// bot√£o excluir
 		excluirJButton.addActionListener(new ExcluirJButtonActionListener());
 		direitaPainel.add(excluirJButton);
 		
 		/* 
-		 * Adicionando os botıes que ficar„o ocultos servir„o para deixar proporcional
+		 * Adicionando os bot√µes que ficar√£o ocultos servir√ßo para deixar proporcional
 		 * o layout da grade
 		 */
 		for (int i= 0; i < hideJButton.length; ++i) {
@@ -92,30 +92,30 @@ public class TipoJFrame extends JFrame {
 			direitaPainel.add(hideJButton[i]);
 		}
 		
-		// adicionando ent„o o bot„o sair
+		// adicionando ent√£o o bot√£o sair
 		direitaPainel.add(sairJButton);
 		add(direitaPainel, BorderLayout.EAST);
 		
 		sairJButton.addActionListener(new SairJButtonActionListener());
 		
-		// configurando as propriedades b·sicas para a apresentaÁ„o do JFrame
+		// configurando as propriedades b√°sicas para a apresenta√ß√£o do JFrame
 		setSize(300, 270);
-		setResizable(false); // n„o permite redimencionar
+		setResizable(false); // n√£o permite redimencionar
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setIconImage(new ImageIcon(getClass().getResource("editar16.png")).getImage());
 		setVisible(true);
 	} // fim do construtor com um argumento
 
 	/**
-	 * MÈtodo para Teste
+	 * M√©todo para Teste
 	 */
 	public static void main(String args[]) {
 		new TipoJFrame("email");
-	} // fim do mÈtodo main
+	} // fim do m√©todo main
 	
 	/**
 	 * Carrega a lista de tipos, buscando-o do banco da fonte de dados
-	 * @author Sebasti„o Relson
+	 * @author Sebasti√£o Relson
 	 */
 	public void carregaLista() {
 		// populando o array de tipos
@@ -136,12 +136,12 @@ public class TipoJFrame extends JFrame {
 			this.dispose();
 			
 		} // fim do catch	
-	} // fim do mÈtodo carrega lista
+	} // fim do m√©todo carrega lista
 	
 
 	// Classes Internas para os Events Listener dos Componentes
 	/**
-	 * ActionListener para o tratamento das aÁıes do bot„o sair
+	 * ActionListener para o tratamento das a√ß√µes do bot√£o sair
 	 */
 	private class SairJButtonActionListener implements ActionListener {
 
@@ -161,11 +161,11 @@ public class TipoJFrame extends JFrame {
 					throwable.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);			
 				
 			}
-		} // fim do mÈtodo actionPerformed
+		} // fim do m√©todo actionPerformed
 	} // fim da classe interna SairJButtonActionListener
 	
 	/**
-	 * ActionListener para tratamento do bot„o excluir 
+	 * ActionListener para tratamento do bot√£o excluir 
 	 */
 	private class ExcluirJButtonActionListener implements ActionListener {
 		
@@ -177,7 +177,7 @@ public class TipoJFrame extends JFrame {
 				
 				int i = selecaoTipos.length;
 				
-				// Quando nenhum item est· selecionado
+				// Quando nenhum item est√° selecionado
 				if (i == 0)
 					throw new Exception("Nenhum Item Selecionado");
 				
@@ -192,7 +192,7 @@ public class TipoJFrame extends JFrame {
 				JOptionPane.showMessageDialog(TipoJFrame.this, "Erro ao tentar excluir o tipo\n" +
 						exception.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
 			} // fim do catch
-		} // fim do mÈtodo actionPerformed
+		} // fim do m√©todo actionPerformed
 	} // fim da classe interna ExcluirJButtonActionListener
 	
 	private class AdicionarJButtonActionListener implements ActionListener {
@@ -201,7 +201,7 @@ public class TipoJFrame extends JFrame {
 			Tipo novoTipo = new TipoImpl("tipos" + nomeTipo);
 			String descricao = JOptionPane.showInputDialog(
 					TipoJFrame.this, 
-					"DescriÁ„o:",					
+					"Descri√ß√£o:",					
 					"Novo Tipo",					
 					JOptionPane.QUESTION_MESSAGE
 					);
@@ -213,7 +213,7 @@ public class TipoJFrame extends JFrame {
 					return;
 				
 				if (descricao.trim().isEmpty())
-					throw new Exception("DescriÁ„o em branco");
+					throw new Exception("Descri√ß√£o em branco");
 				
 				novoTipo.setDescricao(descricao.trim());
 				novoTipo.novo();
@@ -225,7 +225,7 @@ public class TipoJFrame extends JFrame {
 				JOptionPane.showMessageDialog(TipoJFrame.this, "Erro ao tentar inserir um novo tipo\n" +
 						exception.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
 			} // fim do catch
-		} // fim do mÈtodo actionPerformed
+		} // fim do mÔøΩtodo actionPerformed
 	} // fim da classe AdicionarJButtonActionListener 
 	
 	private class EditarJButtonActionListener implements ActionListener {
@@ -243,11 +243,11 @@ public class TipoJFrame extends JFrame {
 				
 				String novaDescricao = JOptionPane.showInputDialog(
 						TipoJFrame.this,
-						"Nova DescriÁ„o para o tipo:",						
+						"Nova Descri√ß√£o para o tipo:",						
 						selecionadoTipo.getDescricao()						
 					);
 				
-				// atualiza o objeto se a descriÁ„o for diferente
+				// atualiza o objeto se a descri√ß√£o for diferente
 				if (!novaDescricao.trim().equals(selecionadoTipo.getDescricao().trim()))
 				{
 					selecionadoTipo.setDescricao(novaDescricao);
@@ -260,7 +260,7 @@ public class TipoJFrame extends JFrame {
 				JOptionPane.showMessageDialog(TipoJFrame.this, "Erro ao tentar alterar o tipo\n" +
 						exception.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
 			} // fim do catch
-		} // fim do mÈtodo actionPerformed		
+		} // fim do m√©todo actionPerformed		
 	} // fim da classse EditarJButtonActionListener
 	
 } // fim da classe TipoJFrame

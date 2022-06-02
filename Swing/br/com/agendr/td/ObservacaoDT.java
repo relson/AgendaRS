@@ -4,7 +4,7 @@ import br.com.agendr.ad.DbConnect;
 import br.com.agendr.ad.DbCrud;
 import br.com.agendr.rn.entidades.Observacao;
 
-import com.sun.rowset.CachedRowSetImpl;
+import javax.sql.rowset.CachedRowSet;
 
 public class ObservacaoDT extends EntidadeDT {
 
@@ -35,7 +35,7 @@ public class ObservacaoDT extends EntidadeDT {
 			
 			Observacao observacoes[];
 			
-			CachedRowSetImpl rowSet = DbConnect.postgresqlConnect();
+			CachedRowSet rowSet = DbConnect.postgresqlConnect();
 			
 			String campos[] = {
 					"observacoes.codigo",
@@ -53,7 +53,7 @@ public class ObservacaoDT extends EntidadeDT {
 					"observacoes",
 					"contatos_has_observacoes",
 					codigoContato					
-				); // fim da declaração da tabela
+				); // fim da declaraÃ§Ã£o da tabela
 			
 			DbCrud.select(rowSet,  tabela, campos);
 			
@@ -83,5 +83,5 @@ public class ObservacaoDT extends EntidadeDT {
 		catch(Exception exception) {
 			throw exception;
 		} // fim do catch
-	} // fim do método getObservacoes
+	} // fim do mÃ©todo getObservacoes
 } // fim da classe ObservacaoDT

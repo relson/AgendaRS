@@ -9,8 +9,6 @@ import br.com.agendr.ad.DbCrud;
 import br.com.agendr.rn.entidades.Stats;
 import br.com.agendr.rn.entidades.Tarefa;
 
-import com.sun.rowset.CachedRowSetImpl;
-
 public class TarefaManager {
 
 	
@@ -28,9 +26,9 @@ public class TarefaManager {
 	//Caso objeto do tipo Tarefa nao possua todos atributos nao pode ser inserido
 	if(!tarefa.isTarefaValid()){
 		
-		throw new Exception("O Objeto do tipo Tarefa não possui atributos necessários para inserção.");
+		throw new Exception("O Objeto do tipo Tarefa nÃ£o possui atributos necessÃ¡rios para inserÃ§Ã£o.");
 				
-	//Se objeto e valido e o banco nao e web entao objeto é inserido 	
+	//Se objeto e valido e o banco nao e web entao objeto Ã© inserido 	
 	}else if(tarefa.isTarefaValid()){
 		
 		String[] values = new String[8];
@@ -46,24 +44,22 @@ public class TarefaManager {
 			
 		if(userId == 0){
 			 
-			CachedRowSetImpl rowSet = DbConnect.postgresqlConnect();
+			CachedRowSet rowSet = DbConnect.postgresqlConnect();
 			//Insere uma nova tarefa
 			DbCrud.insert(rowSet, "Tarefas", DbCrud.getTableFields(rowSet, "Tarefas"), values);	 
 		
 		}else if(userId > 0){
 			
 		
-			String[] fields     = {"codigo"};
-						
-			CachedRowSet rs = new CachedRowSetImpl();
+			String[] fields     = {"codigo"};						
 			
-			CachedRowSetImpl rowSet = DbConnect.mysqlConnect(); 
+			CachedRowSet rowSet = DbConnect.mysqlConnect(); 
 			
 			//Insere uma nova tarefa
 			DbCrud.insert(rowSet, "Tarefas", DbCrud.getTableFields(rowSet, "Tarefas"), values);
 			
 			//Recolhe o id da tarefa inserida
-			rs = DbCrud.select(rowSet, "Tarefas", fields, String.format(
+			CachedRowSet rs = DbCrud.select(rowSet, "Tarefas", fields, String.format(
 									   " titulo = '%s' AND descricao = '%s' AND hora_final = %s", tarefa.getTitulo(),
 									   tarefa.getDescr(), tarefa.getHoraFinal()));
 					
@@ -111,7 +107,7 @@ public class TarefaManager {
 	 * 
 	 */
 
-	public static void changeTarefaStatus(CachedRowSetImpl conexao, Tarefa tarefa, String status)throws Exception {
+	public static void changeTarefaStatus(CachedRowSet conexao, Tarefa tarefa, String status)throws Exception {
 						
 		if(Stats.isStatusValid(status) && tarefa != null && status != null){
 			
@@ -138,7 +134,7 @@ public class TarefaManager {
 	 */
 	
 	
-	public static void changeTarefaStatus(CachedRowSetImpl conexao, int codigo, String status)throws Exception {
+	public static void changeTarefaStatus(CachedRowSet conexao, int codigo, String status)throws Exception {
 		
 		if(Stats.isStatusValid(status)){
 			
@@ -161,7 +157,7 @@ public class TarefaManager {
 	 *Recebe as antigas configuracoes e subustutues pelas novas
 	 */
 	
-	public static void configTarefa(CachedRowSetImpl conexao, Tarefa oldTarefa, Tarefa newTarefa) throws Exception{
+	public static void configTarefa(CachedRowSet conexao, Tarefa oldTarefa, Tarefa newTarefa) throws Exception{
 		
 		if(oldTarefa != null && newTarefa != null && conexao != null && newTarefa.isTarefaValid()){
 			
@@ -195,7 +191,7 @@ public class TarefaManager {
 	/*Metodo que altera todos os parametros de uma tarefa 
 	 *Recebe as novas configuracoes para tarefa com o codigo especifico
 	 */
-	public void configTarefa(CachedRowSetImpl conexao, int codigo, Tarefa tarefa)throws Exception{
+	public void configTarefa(CachedRowSet conexao, int codigo, Tarefa tarefa)throws Exception{
 		
 		if(tarefa != null && conexao != null && tarefa.isTarefaValid()){
 			

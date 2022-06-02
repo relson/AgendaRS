@@ -6,14 +6,14 @@ public class Observacao extends Entidade
 
 	public String getDescricao() {
 		return descricao;
-	} // fim do método getDescricao
+	} // fim do mÃ©todo getDescricao
 	
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
-	} // fim do método setDescricao
+	} // fim do mÃ©todo setDescricao
 	
 	public String toString()
 	{
-		return getDescricao() + " (Não classificada)";
-	} // fim do método
+		return getDescricao() + " (NÃ£o classificada)";
+	} // fim do mÃ©todo
 } // fim da classe observacao

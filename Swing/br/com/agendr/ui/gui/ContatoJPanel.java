@@ -53,9 +53,9 @@ public class ContatoJPanel extends EntidadeListaJPanel {
 							JOptionPane.showMessageDialog(
 									ContatoJPanel.this, 
 									"Nenhum contato selecionado.", 
-									"Atenção",
+									"AtenÃ§Ã£o",
 									JOptionPane.WARNING_MESSAGE
-								); // fim da chamada do método showMessageDialogo da classe JOptionPane
+								); // fim da chamada do mÃ©todo showMessageDialogo da classe JOptionPane
 					}
 				}
 		);		

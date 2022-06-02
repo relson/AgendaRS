@@ -1,6 +1,6 @@
 package br.com.agendr.td;
 
-import com.sun.rowset.CachedRowSetImpl;
+import javax.sql.rowset.CachedRowSet;
 
 import br.com.agendr.ad.DbConnect;
 import br.com.agendr.ad.DbCrud;
@@ -17,7 +17,7 @@ public class ContatoDT extends EntidadeDT {
 			
 			Contato contatos[];
 			
-			CachedRowSetImpl rowSet = DbConnect.postgresqlConnect();
+			CachedRowSet rowSet = DbConnect.postgresqlConnect();
 			
 			String campos[] = {"codigo","nome", "sobrenome"};
 			
@@ -51,11 +51,11 @@ public class ContatoDT extends EntidadeDT {
 		catch(Exception exception) {
 			throw exception;
 		} // fim do catch
-	} // fim do método getTipos
+	} // fim do mÃ©todo getTipos
 	public static void novo(Contato contato) throws Exception
 	{
 		
-		CachedRowSetImpl rowSet = DbConnect.postgresqlConnect();
+		CachedRowSet rowSet = DbConnect.postgresqlConnect();
 		
 		String tabela = "contatos";
 		String campos[] = {"nome", "sobrenome"};
@@ -94,7 +94,7 @@ public class ContatoDT extends EntidadeDT {
 			DbCrud.insert(rowSet, tabela, campos, valores);
 		} // fim do for
 		
-	} // fim do método "novo"
+	} // fim do mÃ©todo "novo"
 	
 	public void novo()
 	{

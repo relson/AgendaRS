@@ -11,17 +11,17 @@ public class ContatoTipo extends Tipo {
 	}
 
 	public void atualizar() {
-		// TODO Implementar método atualizar
+		// TODO Implementar mÃ©todo atualizar
 
 	}
 
 	public void excluir() {
-		// TODO Implementar método excluir
+		// TODO Implementar mÃ©todo excluir
 
 	}
 
 	public void novo() {
-		// TODO Implementar método novo
+		// TODO Implementar mÃ©todo novo
 
 	}
 

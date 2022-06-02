@@ -62,7 +62,7 @@ public class Endereco extends Entidade {
 				"CEP: %s\n, "+
 				"Cidade: %s\n, "+
 				"Estado: %s\n, "+
-				"País: %s (Não Classificado) ",
+				"PaÃ­s: %s (NÃ£o Classificado) ",
 				getRua(),
 				getComplemento(),
 				getBairro(),
@@ -71,5 +71,5 @@ public class Endereco extends Entidade {
 				getEstado(),
 				getPais()
 		); // fim da chamado do meod format
-	} // fim do método toString
+	} // fim do mÃ©todo toString
 } // fim da clase Endereco

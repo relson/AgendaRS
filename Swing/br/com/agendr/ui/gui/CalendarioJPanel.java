@@ -11,8 +11,8 @@ public class CalendarioJPanel extends JPanel{
 	
 	public CalendarioJPanel() {
 		super();
-		// TODO Contrutor do Painel Calend·rio
-		JLabel jlabel = new JLabel("Calend·rio");
+		// TODO Contrutor do Painel Calend√°rio
+		JLabel jlabel = new JLabel("Calend√°rio");
 		
 		jlabel.setFont(new Font("Arial",Font.BOLD + Font.ITALIC,22));
 		

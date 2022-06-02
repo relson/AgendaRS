@@ -7,7 +7,7 @@ public class EmailListaJPanel extends EntidadeListaJPanel
 	public static final long serialVersionUID = 1;
 	
 	/**
-	 * Documentar método
+	 * Documentar mÃ©todo
 	 *
 	 */
 	private EmailListaJPanel() {

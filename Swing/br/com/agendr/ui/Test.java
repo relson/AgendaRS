@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import br.com.agendr.ad.DbConnect;
 import br.com.agendr.rn.entidades.Tarefa;
 
-import com.sun.rowset.CachedRowSetImpl;
+import javax.sql.rowset.CachedRowSet;
 
 public class Test {
 	
@@ -30,7 +30,7 @@ public class Test {
 		
 		try{
 			
-			CachedRowSetImpl conexao = DbConnect.postgresqlConnect();
+			CachedRowSet conexao = DbConnect.postgresqlConnect();
 			
 			TarefaManager.configTarefa(conexao, tarefa, newTarefa);
 			TarefaManager.insertTarefa(newTarefa);

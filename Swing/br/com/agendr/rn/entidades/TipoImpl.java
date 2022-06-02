@@ -3,9 +3,9 @@ package br.com.agendr.rn.entidades;
 import br.com.agendr.td.TipoDT;
 
 /**
- * Implementaçã para classe Tipo de forma genérica, passando apenas o nome do tipo no construtor da classe
+ * ImplementaÃ§Ã£o para classe Tipo de forma genÃ©rica, passando apenas o nome do tipo no construtor da classe
  * 
- * @author Sebastião Relson
+ * @author SebastiÃ£o Relson
  *
  */
 public class TipoImpl extends Tipo {
@@ -28,7 +28,7 @@ public class TipoImpl extends Tipo {
 	public static Tipo[] getTipos(String nomeTipo) throws Exception
 	{		
 		return TipoDT.getTipos(nomeTipo);
-	} // fim do método getTipos
+	} // fim do mÃ©todo getTipos
 	
 	public void novo()
 	{
@@ -44,13 +44,13 @@ public class TipoImpl extends Tipo {
 			exception.printStackTrace();
 		} // fim do cacth
 		
-	} // fim do método novo
+	} // fim do mï¿½todo novo
 	
 	public void excluir()		
 	{
 		System.out.printf("Excluir Tipo %s:\n" +
 				"Codigo: \t%d\n" +
-				"Descrição: \t%s\n",
+				"Descriï¿½ï¿½o: \t%s\n",
 				getNome(),
 				getCodigo(),				
 				getDescricao());
@@ -64,7 +64,7 @@ public class TipoImpl extends Tipo {
 			exception.printStackTrace();
 		}
 		
-	} // fim do método excluir
+	} // fim do mï¿½todo excluir
 	
 	public void atualizar()
 	{
@@ -79,5 +79,5 @@ public class TipoImpl extends Tipo {
 			exception.printStackTrace();
 		}
 		
-	} // fim do método excluir
+	} // fim do mï¿½todo excluir
 }

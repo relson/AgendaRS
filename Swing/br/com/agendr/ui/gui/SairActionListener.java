@@ -5,10 +5,10 @@ import java.awt.event.ActionListener;
 
 /**
  * 
- * Classe que implementa o comportamento padr„o para sair
- * Chama a funÁ„o System.exit(0);
+ * Classe que implementa o comportamento padr√£o para sair
+ * Chama a fun√ß√£o System.exit(0);
  * 
- * @author Sebasti„o Relson <sebastiaorelson@systecinfo.com.br>
+ * @author Sebasti√£o Relson <sebastiaorelson@systecinfo.com.br>
  * 
  */
 

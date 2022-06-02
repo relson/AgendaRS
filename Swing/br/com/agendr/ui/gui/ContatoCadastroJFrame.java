@@ -53,7 +53,7 @@ public class ContatoCadastroJFrame extends JFrame{
 	/**
 	 * Construtor sem argumentos usado quando se deseja inserir um novo contato
 	 * 
-	 * @author Sebasti„o Relson
+	 * @author Sebasti√£o Relson
 	 */
 	public ContatoCadastroJFrame()
 	{
@@ -62,7 +62,7 @@ public class ContatoCadastroJFrame extends JFrame{
 	} // fim do construtor sem argumento
 	
 	/**
-	 * Construtor com um argumento passando um contato no argumento para ediÁ„o.	  
+	 * Construtor com um argumento passando um contato no argumento para edi√ß√£o.	  
 	 * @param contato Contato a ser editato
 	 */
 	public ContatoCadastroJFrame(Contato contato)
@@ -72,7 +72,7 @@ public class ContatoCadastroJFrame extends JFrame{
 		configurarInterface();
 		
 		/**
-		 * Configura tambÈm os valores iniciais dos JTextField com o nome e
+		 * Configura tamb√©m os valores iniciais dos JTextField com o nome e
 		 * sobrenome do contato		  
 		 */
 		nomeJTextField.setText(contato.getNome());
@@ -118,20 +118,20 @@ public class ContatoCadastroJFrame extends JFrame{
 					+ exception.getMessage(), 
 					"Erro", 
 					JOptionPane.WARNING_MESSAGE
-				); // fim da chamada do mÈtod showMessageDialog do Objeto JOptonPane
+				); // fim da chamada do m√©todo showMessageDialog do Objeto JOptonPane
 			
 			
 		} // fim do catch
 		
-	} // fim do mÈtodo configurarTiposSelecionado
+	} // fim do m√©todo configurarTiposSelecionado
 	
 	/**
 	 * 
-	 *  Verifica se o contato È referÍncia do contato È nulo se for
-	 *  ent„o o formul·rio ser· configurado para inserÁ„o de um novo contato
-	 *  porÈm se existir um referÍncia de um contato prepara para alteraÁ„o.
+	 *  Verifica se o contato √© refer√™ncia do contato √© nulo se for
+	 *  ent√£o o formul√°rio ser√° configurado para inserido de um novo contato
+	 *  por√©m se existir um refer√™ncia de um contato prepara para altera√ß√£o.
 	 *  
-	 *  @author Sebasti„o Relson 
+	 *  @author Sebasti√£o Relson 
 	 */
 	public void configurarInterface()
 	{
@@ -222,19 +222,19 @@ public class ContatoCadastroJFrame extends JFrame{
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setResizable(false);
 		setVisible(true);		
-	} // fim do mÈtodo set
+	} // fim do m√©todo set
 
 	/**
-	 * MÈtodo que adiciona um JPanel no JTabbedPane para cada
+	 * M√©todo que adiciona um JPanel no JTabbedPane para cada
 	 * conjunto de atribuo exceto Tipo de Contato, nome e Sobrenome. <br>
-	 * Os atributos s„o: <br>
+	 * Os atributos s√£o: <br>
 	 * - <b> e-mail <br>
 	 * - Telefone <br>
-	 * - EndereÁo <br>
-	 * - ObservaÁ„o <br>
+	 * - Endere√ßo <br>
+	 * - Observa√ß√£o <br>
 	 * - Site <br> </b>
 	 * 
-	 * @author Sebasti„o Relson
+	 * @author Sebasti√£o Relson
 	 */
 	public void setConfiguracaoJTabbedPane()		
 	{
@@ -268,7 +268,7 @@ public class ContatoCadastroJFrame extends JFrame{
 			jTabbedPane.addTab("Telefone", 
 					anexoIcon,
 					telefoneTab,
-					"Lista de n˙meros de telefone do Contato");			
+					"Lista de n√∫meros de telefone do Contato");			
 			
 		} // fim do try
 		catch (Exception exception)
@@ -286,16 +286,16 @@ public class ContatoCadastroJFrame extends JFrame{
 		{		
 			EnderecoListaJPanel enderecoTab = new EnderecoListaJPanel(this.contato);
 			
-			jTabbedPane.addTab("EndereÁos", 
+			jTabbedPane.addTab("Endere√ßos", 
 					anexoIcon,
 					enderecoTab,
-					"Lista de EndereÁos relacionados ao Contato");
+					"Lista de Endere√ßos relacionados ao Contato");
 		} // fim do try
 		catch (Exception exception)
 		{
 			JOptionPane.showMessageDialog(
 					ContatoCadastroJFrame.this, 
-					"Erro ao tentar obter a lista de EndereÁos para o contato" + 
+					"Erro ao tentar obter a lista de Endere√ßos para o contato" + 
 					exception.getMessage(),
 					"Contato", 
 					JOptionPane.WARNING_MESSAGE
@@ -306,16 +306,16 @@ public class ContatoCadastroJFrame extends JFrame{
 		{		
 			ObservacaoListaJPanel observacaoTab = new ObservacaoListaJPanel(this.contato);
 			
-			jTabbedPane.addTab("ObservaÁ„o", 
+			jTabbedPane.addTab("Observa√ß√£o", 
 					anexoIcon,
 					observacaoTab,
-					"Lista de ObservaÁıes a respeito do Contato");
+					"Lista de Observa√ß√µes a respeito do Contato");
 		} // fim do try
 		catch (Exception exception)
 		{
 			JOptionPane.showMessageDialog(
 					ContatoCadastroJFrame.this, 
-					"Erro ao tentar obter a lista de observaÁıes para o contato" + 
+					"Erro ao tentar obter a lista de observa√ß√µes para o contato" + 
 					exception.getMessage(),
 					"Contato", 
 					JOptionPane.WARNING_MESSAGE
@@ -343,27 +343,27 @@ public class ContatoCadastroJFrame extends JFrame{
 					JOptionPane.WARNING_MESSAGE
 				);
 		} // fim do catch		
-	} // fim do mÈtodo setConfiguracaoJTabbedPane 
+	} // fim do m√©todo setConfiguracaoJTabbedPane 
 	
 	/**
-	 *  MÈtodo para testar a classe para inserÁ„o de um novo contato
+	 *  M√©todo para testar a classe para inser√ß√£o de um novo contato
 	 *  
-	 * @param args par‚metro ignorado.
+	 * @param args par√¢metro ignorado.
 	 */
 	
 	public static void main(String args[])
 	{
 		new ContatoCadastroJFrame();
-	} // fim do mÈtodo main
+	} // fim do m√©todo main
 	
 	/**
-	 * Classe privada que implementa a interface ActionListener È respons·vel por
-	 * <b> Aplicar </b> as alteraÁıes feitas nas informaÁıes b·sicas do contato. </p>
-	 * As alteraÁıe b·sicas s„o: </p> <br>
+	 * Classe privada que implementa a interface ActionListener √© respons√°vel por
+	 * <b> Aplicar </b> as altera√ß√µes feitas nas informa√ß√µes b√°sicas do contato. </p>
+	 * As altera√ß√µe b√°sicas s√£o: </p> <br>
 	 * Nome <br>
 	 * Sobrenome<br>
 	 * ou Tipo
-	 * @author Sebasti„o Relson 05/06/2007
+	 * @author Sebasti√£o Relson 05/06/2007
 	 *
 	 */
 	private class AplicarJButtonActionListener implements ActionListener
@@ -405,14 +405,14 @@ public class ContatoCadastroJFrame extends JFrame{
 			
 			contato.atualizar();
 			
-		} // fim do mÈtodo actionPerformed
+		} // fim do m√©todo actionPerformed
 	} // fim da classe privada interna AplicarJButtonActionListener
 	
 	/**
-	 * Classe privada que implementa a interface ActionListener È respons·vel por 
-	 * adicionar um novo contato ao clicar no bot„o adicionar.
+	 * Classe privada que implementa a interface ActionListener √© respons√°vel por 
+	 * adicionar um novo contato ao clicar no bot√£o adicionar.
 	 *  
-	 * @author Sebasti„o Relson 05/06/2007
+	 * @author Sebasti√£o Relson 05/06/2007
 	 *
 	 */	
 	private class AdicionarJButtonActionListener implements ActionListener
@@ -430,13 +430,13 @@ public class ContatoCadastroJFrame extends JFrame{
 				if (nome.isEmpty())
 				{
 					nomeJTextField.requestFocus();
-					throw new Exception("… necess·rio um nome para o contato");					
+					throw new Exception("√â necess√°rio um nome para o contato");					
 				} // fim do if
 				
 				// Verifica se nenhum Tipo Foi selecionado para o contato.
 				if (tipoJList.getSelectedIndices().length <= 0)
 				{
-					throw new Exception("… necess·rio um tipo para o contato");
+					throw new Exception("√â necess√°rio um tipo para o contato");
 					
 				} // fim do if
 				
@@ -474,6 +474,6 @@ public class ContatoCadastroJFrame extends JFrame{
 			{
 				JOptionPane.showMessageDialog(ContatoCadastroJFrame.this, exception.getMessage(),"Novo Contato", JOptionPane.WARNING_MESSAGE);				
 			} // fim do catch
-		} // fim do mÈtodo actionPerformed
+		} // fim do m√©todo actionPerformed
 	} // fim da classe interna AdicionarJButtonActionListener
 } // fim da classe ContatoCadastroJFrame

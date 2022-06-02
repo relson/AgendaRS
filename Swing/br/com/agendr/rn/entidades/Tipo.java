@@ -3,9 +3,9 @@ package br.com.agendr.rn.entidades;
 import br.com.agendr.td.Crud;
 
 /**
- * Classe Abstrata para definição de Tipo
+ * Classe Abstrata para definiÃ§Ã£o de Tipo
  * 
- * @author Sebastião Relson
+ * @author SebastiÃ£o Relson
  * 
  * @since Quinta-feira, 17 de Maio de 2007
  *

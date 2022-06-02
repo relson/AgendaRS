@@ -1,6 +1,6 @@
 package br.com.agendr.td;
 
-import com.sun.rowset.CachedRowSetImpl;
+import javax.sql.rowset.CachedRowSet;
 
 import br.com.agendr.ad.DbConnect;
 import br.com.agendr.ad.DbCrud;
@@ -16,7 +16,7 @@ public class ContatoTipoDT extends TipoDT {
 			
 			ContatoTipo tipos[];
 			
-			CachedRowSetImpl rowSet = DbConnect.postgresqlConnect();
+			CachedRowSet rowSet = DbConnect.postgresqlConnect();
 			
 			String campos[] = {
 					"tiposcontato.codigo",
@@ -65,5 +65,5 @@ public class ContatoTipoDT extends TipoDT {
 		catch(Exception exception) {
 			throw exception;
 		} // fim do catch
-	} // fim do método getTipos
+	} // fim do mÃ©todo getTipos
 } // fim da classe ContatoTipoDT

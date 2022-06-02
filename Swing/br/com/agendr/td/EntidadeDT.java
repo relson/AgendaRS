@@ -21,16 +21,16 @@ public abstract class EntidadeDT implements Crud{
 		public int getValue()
 		{
 			return value;
-		} // fim do método getValue
+		} // fim do mÃ©todo getValue
 		
 		public String toString()
 		{			
 			return getNomeEntidades()[value];
-		} // fim do método 
+		} // fim do mÃ©todo 
 	}
 	
 	/**
-	 * Obtém um array com nomes das entidades que tem <b>Tipo</b> correspondente
+	 * ObtÃ©m um array com nomes das entidades que tem <b>Tipo</b> correspondente
 	 * @return String[] - array de nomes
 	 */
 	public static final String[] getNomeEntidades()

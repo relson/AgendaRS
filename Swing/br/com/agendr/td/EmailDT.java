@@ -5,7 +5,7 @@ import br.com.agendr.ad.DbCrud;
 
 import br.com.agendr.rn.entidades.Email;
 
-import com.sun.rowset.CachedRowSetImpl;
+import javax.sql.rowset.CachedRowSet;
 
 public class EmailDT extends EntidadeDT {
 	
@@ -16,16 +16,16 @@ public class EmailDT extends EntidadeDT {
 	}
 
 	public void atualizar() {
-		// TODO Implementar Método
+		// TODO Implementar MÃ©todo
 
 	}
 
 	public void excluir() {
-		// TODO Implementar Método
+		// TODO Implementar MÃ©todo
 	}
 
 	public void novo() throws Exception {
-		// TODO Implementar método 
+		// TODO Implementar mÃ©todo 
 
 	}
 	
@@ -38,7 +38,7 @@ public class EmailDT extends EntidadeDT {
 			
 			Email emails[];
 			
-			CachedRowSetImpl rowSet = DbConnect.postgresqlConnect();
+			CachedRowSet rowSet = DbConnect.postgresqlConnect();
 			
 			String campos[] = {
 					"emails.codigo",
@@ -56,7 +56,7 @@ public class EmailDT extends EntidadeDT {
 					"emails",
 					"contatos_has_emails",
 					codigoContato					
-				); // fim da declaração da tabela
+				); // fim da declaraÃ§Ã£o da tabela
 			
 			DbCrud.select(rowSet,  tabela, campos);
 			
@@ -86,5 +86,5 @@ public class EmailDT extends EntidadeDT {
 		catch(Exception exception) {
 			throw exception;
 		} // fim do catch
-	} // fim do método getEmails
+	} // fim do mÃ©todo getEmails
 } // fim da classe EmailDT

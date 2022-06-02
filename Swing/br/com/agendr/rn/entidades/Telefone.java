@@ -12,15 +12,15 @@ public class Telefone extends Entidade {
 	}
 
 	/**
-	 * @param numero string contendo o número do telefone
+	 * @param numero string contendo o nÃºmero do telefone
 	 */
 	public void setNumero(String numero) {
 		this.numero = numero;
-	} // fim do método setNumero
+	} // fim do mÃ©todo setNumero
 	
 	public String toString()
 	{
-		return this.numero + " (Não classificado)";
+		return this.numero + " (NÃ£o classificado)";
 	}
 	
 } // fim da classe Telefone

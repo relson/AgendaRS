@@ -9,17 +9,17 @@ import br.com.agendr.rn.entidades.Entidade;
 import br.com.agendr.rn.entidades.TipoImpl;
 
 /**
- * Classe abstrata para cadastro, implementa vários métodos de conviniencia
- * que será usado em todo o projeto. </p>
- * Configura como padrão um ícone de adição se a entidade configurada for
- * nula e configura o ícone de edição se for passado uma entidade no 
- * construtor, chamando respectivamente os métodos configurarInterfaceAdicao e
+ * Classe abstrata para cadastro, implementa vï¿½rios mï¿½todos de conviniencia
+ * que serï¿½ usado em todo o projeto. </p>
+ * Configura como padrï¿½o um ï¿½cone de adiï¿½ï¿½o se a entidade configurada for
+ * nula e configura o ï¿½cone de ediï¿½ï¿½o se for passado uma entidade no 
+ * construtor, chamando respectivamente os mï¿½todos configurarInterfaceAdicao e
  * configurarInterfaceEdicao.<br> </p>
  * 
  * @see configurarInterfaceAdicao
  * @see configurarInterfaceEdicao
  * 
- * @author Sebastião Relson 10/06/2007
+ * @author Sebastiï¿½o Relson 10/06/2007
  */
 public abstract class CadastroJPanel extends JPanel{
 	
@@ -28,30 +28,30 @@ public abstract class CadastroJPanel extends JPanel{
 	protected Entidade entidade;
 		
 	/**
-	 * Método que configura a interface para a adição, colocando por padrão
-	 * o ícone de adição. <br> 
+	 * Mï¿½todo que configura a interface para a adiï¿½ï¿½o, colocando por padrï¿½o
+	 * o ï¿½cone de adiï¿½ï¿½o. <br> 
 	 */
 	public void configurarInterfaceAdicao()
 	{
 		
-	} // fim do método configurarInterfaceAdicao
+	} // fim do mï¿½todo configurarInterfaceAdicao
 		
 	/**
-	 * Método que configura a interface para a adição, colocando por padrão
-	 * o ícone de edição. <br> 
+	 * Mï¿½todo que configura a interface para a adiï¿½ï¿½o, colocando por padrï¿½o
+	 * o ï¿½cone de ediï¿½ï¿½o. <br> 
 	 */
 	public void configurarInterfaceEdicao()
 	{
 		
-	} // fim do método configurar
+	} // fim do mÃ©todo configurar
 	
 	/**
-	 * Método que retorna verdadeiro se o Painel estirver em edição.
+	 * MÃ©todo que retorna verdadeiro se o Painel estirver em ediÃ§Ã£o.
 	 */
 	public boolean emEdicao()
 	{
 		return (entidade != null);
-	} // fim do método em edicao
+	} // fim do mÃ©todo em edicao
 	
 	/**
 	 *  Configurar o JList os itens selecionados do JList de acordo com o
@@ -64,7 +64,7 @@ public abstract class CadastroJPanel extends JPanel{
 			ListModel listData = jList.getModel();
 			
 			if (listData == null)
-				throw new Exception("Lista não configurada");
+				throw new Exception("Lista nÃ£o configurada");
 			
 			int indices[] = new int[entidades.length];
 			
@@ -92,8 +92,8 @@ public abstract class CadastroJPanel extends JPanel{
 					+ exception.getMessage(), 
 					"Erro", 
 					JOptionPane.WARNING_MESSAGE
-				); // fim da chamada do métod showMessageDialog do Objeto JOptonPane
+				); // fim da chamada do mÃ©todo showMessageDialog do Objeto JOptonPane
 		} // fim do catch
 		
-	} // fim do método configurarTiposSelecionado
+	} // fim do mÃ©todo configurarTiposSelecionado
 } // fim da classe abstrata CadastroJPanel

@@ -10,10 +10,10 @@ public class Email extends Entidade{
 
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
-	} // fim do método setEndereco
+	} // fim do mÃ©todo setEndereco
 	
 	public String toString()
 	{
-		return getEndereco() + "(Não Classificado)";
+		return getEndereco() + "(NÃ£o Classificado)";
 	}
 } // fim da classe Email

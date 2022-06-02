@@ -35,9 +35,9 @@ public class Main extends JFrame implements WindowListener{
 	private JButton resumoJButton = new JButton("Resumo");
 	private JButton contatoJButton = new JButton("Contato");
 	private JButton tarefaJButton = new JButton("Tarefa");
-	private JButton calendarioJButton = new JButton("Calend·rio");
+	private JButton calendarioJButton = new JButton("Calend√°rio");
 	private JButton rssJButton = new JButton("RSS");
-	private JButton anotacoesJButton = new JButton("AnotaÁıes");;
+	private JButton anotacoesJButton = new JButton("Anota√ß√µes");;
 	
 	private BotoesActionListener botoesActionListener = new BotoesActionListener(); 
 	
@@ -91,7 +91,7 @@ public class Main extends JFrame implements WindowListener{
 		add(centralJPanel);
 		
 		/*
-		 *  Configura os Event Listener dos botıes
+		 *  Configura os Event Listener dos bot√µes
 		 * do painel esquerdo
 		 * 
 		 */
@@ -120,7 +120,7 @@ public class Main extends JFrame implements WindowListener{
 		
 		setIconesJButton();
 		
-	}	// fim do MÈtodo main
+	}	// fim do M√©todo main
 	
 	private void setIconesJButton()
 	{		
@@ -148,10 +148,10 @@ public class Main extends JFrame implements WindowListener{
 		}
 		catch(AWTException e)
 		{
-			JOptionPane.showMessageDialog(this,"Erro ao tentar colocar o Ìcone na badeja","Error",JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this,"Erro ao tentar colocar o √≠cone na badeja","Error",JOptionPane.ERROR_MESSAGE);
 			System.exit(0);
 		}
-	} // fim do mÈtodo toSysTray
+	} // fim do m√©todo toSysTray
 	
 	public static void main(String args[]){		
 		
@@ -164,14 +164,14 @@ public class Main extends JFrame implements WindowListener{
 		app.repaint();
 		app.conteiner = app.getContentPane();
 		app.setVisible(true);
-	} // fim do mÈtodo Main
+	} // fim do m√©todo Main
 	
 	
 	/** 
-	 * Classe respons·vel por delegar qual painel ser· exibido
-	 * ao clicar num dos botıes da lateral esquerdada na janela principal.
+	 * Classe respons√°vel por delegar qual painel ser? exibido
+	 * ao clicar num dos bot√µes da lateral esquerdada na janela principal.
 	 * 
-	 * @author Sebasti„o Relson 10/06/2007
+	 * @author Sebasti√£o Relson 10/06/2007
 	 *
 	 */
 	private class BotoesActionListener implements ActionListener {
@@ -205,6 +205,6 @@ public class Main extends JFrame implements WindowListener{
 			centralJPanel = jpanel;
 			add(centralJPanel,  BorderLayout.CENTER);
 			conteiner.validate();
-		} // fim do mÈtodo actionPerformed		
+		} // fim do m√©todo actionPerformed		
 	} // fim da classe interna BotoesActionListener
 } // fim da classse Main

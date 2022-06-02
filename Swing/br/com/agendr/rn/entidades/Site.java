@@ -14,6 +14,6 @@ public class Site extends Entidade {
 	
 	public String toString()
 	{
-		return getEndereco() + " (Não classificado)";
+		return getEndereco() + " (NÃ£o classificado)";
 	}
 } // fim da classe Site

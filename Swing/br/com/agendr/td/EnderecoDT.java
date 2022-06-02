@@ -4,22 +4,22 @@ import br.com.agendr.ad.DbConnect;
 import br.com.agendr.ad.DbCrud;
 import br.com.agendr.rn.entidades.Endereco;
 
-import com.sun.rowset.CachedRowSetImpl;
+import javax.sql.rowset.CachedRowSet;
 
 public class EnderecoDT extends EntidadeDT {
 
 	public void atualizar() {
-		// TODO implementar método
+		// TODO implementar mÃ©todo
 
 	}
 
 	public void excluir() {
-		// TODO implementar método
+		// TODO implementar mÃ©todo
 
 	}
 
 	public void novo() throws Exception {
-		// TODO implementar método
+		// TODO implementar mÃ©todo
 
 	}
 	public static final Endereco[] getEnderecos(int codigoContato) 
@@ -29,7 +29,7 @@ public class EnderecoDT extends EntidadeDT {
 		{			
 			Endereco  enderecos[];
 			
-			CachedRowSetImpl rowSet = DbConnect.postgresqlConnect();
+			CachedRowSet rowSet = DbConnect.postgresqlConnect();
 			
 			String campos[] = {
 					"enderecos.codigo",
@@ -53,7 +53,7 @@ public class EnderecoDT extends EntidadeDT {
 					"enderecos",
 					"contatos_has_enderecos",
 					codigoContato					
-				); // fim da declaração da tabela
+				); // fim da declaraÃ§Ã£o da tabela
 			
 			DbCrud.select(rowSet,  tabela, campos);
 			
@@ -95,5 +95,5 @@ public class EnderecoDT extends EntidadeDT {
 		catch(Exception exception) {
 			throw exception;
 		} // fim do catch
-	} // fim do método getEnderecos
+	} // fim do mÃ©todo getEnderecos
 }

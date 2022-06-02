@@ -1,6 +1,6 @@
 package br.com.agendr.td;
 
-import com.sun.rowset.CachedRowSetImpl;
+import javax.sql.rowset.CachedRowSet;
 
 import br.com.agendr.ad.DbConnect;
 import br.com.agendr.ad.DbCrud;
@@ -9,21 +9,21 @@ import br.com.agendr.rn.entidades.Site;
 public class SiteDT extends EntidadeDT {
 
 	public SiteDT() {
-		// TODO Implementar MÈtodo
+		// TODO Implementar M√©todo
 	}
 
 	public void atualizar() {
-		// TODO Implementar MÈtodo
+		// TODO Implementar M√©todo
 
 	}
 
 	public void excluir() {
-		// TODO Implementar MÈtodo
+		// TODO Implementar M√©todo
 
 	}
 
 	public void novo() throws Exception {
-		// TODO Implementar mÈtodo
+		// TODO Implementar m√©todo
 	}
 	
 	public static final Site[] getSites(int codigoContato)
@@ -33,12 +33,12 @@ public class SiteDT extends EntidadeDT {
 		{
 			Site sites[];
 			
-			CachedRowSetImpl rowSet = DbConnect.postgresqlConnect();
+			CachedRowSet rowSet = DbConnect.postgresqlConnect();
 			
 			String campos[] = {
 					"sites.codigo",
 					"sites.site"
-			}; // fim da declaraÁ„o do vetor campos
+			}; // fim da declara√ß√£o do vetor campos
 			
 			String tabela = String.format(
 					"\t%1$s\n" +
@@ -51,19 +51,19 @@ public class SiteDT extends EntidadeDT {
 					"sites",
 					"contatos_has_sites",
 					codigoContato					
-				); // fim da declaraÁ„o da tabela
+				); // fim da declara√ß√£o da tabela
 			
 			DbCrud.select(rowSet, tabela, campos);
 			
 			// move o cursor para ultima linha
 			rowSet.last();
 			
-			// e obtÈm o total de linhas para inicializar o vetor de sites
+			// e obt√©m o total de linhas para inicializar o vetor de sites
 			sites = new Site[rowSet.getRow()];
 			
 			/* 
 			 * move o cursor para antes da primeira linha de forma que seja
-			 * possÌvel ent„o navegar a partir da da primeira linha
+			 * poss√≠vel ent√£o navegar a partir da da primeira linha
 			 * 
 			 */
 			rowSet.beforeFirst();
@@ -87,5 +87,5 @@ public class SiteDT extends EntidadeDT {
 		} catch (Exception exception) {
 			throw exception;
 		} // fim do catch		
-	} // fim do mÈtodo getSites
+	} // fim do m√©todo getSites
 } // fim 

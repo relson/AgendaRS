@@ -10,8 +10,8 @@ public class AnotacaoJPanel extends EntidadeListaJPanel{
 	
 	public AnotacaoJPanel() {
 		super();
-		// TODO Contrutor do Painel Calendário
-		JLabel jlabel = new JLabel("Anotações");
+		// TODO Contrutor do Painel CalendÃ¡rio
+		JLabel jlabel = new JLabel("AnotaÃ§Ãµes");
 		
 		jlabel.setFont(new Font("Arial",Font.BOLD + Font.ITALIC,22));
 		
