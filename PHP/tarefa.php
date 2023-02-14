@@ -1,5 +1,8 @@
 <?php
 session_start();
+
+require_once 'lib.php';
+
 if (isset($_GET["order"]))
     $order = @$_GET["order"];
 if (isset($_GET["type"]))
@@ -116,7 +119,7 @@ if (!isset($filterfield) && isset($_SESSION["filter_field"]))
                 if (isset($wholeonly))
                     $_SESSION["wholeonly"] = $wholeonly;
 
-                mysql_close($conn);
+                mysqli_close($conn);
                 ?>
             </td></tr></table>
     <table class="bd" width="100%"><tr><td class="hr">Todos os direitos reservados</td></tr></table>
@@ -161,7 +164,7 @@ function select() {
     }
     $startrec = $showrecs * ($page - 1);
     if ($startrec < $count) {
-        mysql_data_seek($res, $startrec);
+        mysqli_data_seek($res, $startrec);
     }
     $reccount = min($showrecs * $page, $count);
     ?>
@@ -258,7 +261,7 @@ function select() {
         </tr>
     <?php
     for ($i = $startrec; $i < $reccount; $i++) {
-        $row = mysql_fetch_assoc($res);
+        $row = mysqli_fetch_assoc($res);
         $style = "dr";
         if ($i % 2 != 0) {
             $style = "sr";
@@ -281,7 +284,7 @@ function select() {
             </tr>
         <?php
     }
-    mysql_free_result($res);
+    mysqli_free_result($res);
     ?>
     </table>
     <br>
@@ -347,9 +350,9 @@ function showrow($row, $recid) {
             <td class="dr"><select name="codigoTarefaStatus">
     <?php
     $sql = "select `codigoTarefaStatus`, `descricao` from `tarefastatus`";
-    $res = mysql_query($sql, $conn) or die(mysql_error());
+    $res = mysqli_query($conn, $sql) or die(mysqli_error());
 
-    while ($lp_row = mysql_fetch_assoc($res)) {
+    while ($lp_row = mysqli_fetch_assoc($res)) {
         $val = $lp_row["codigoTarefaStatus"];
         $caption = $lp_row["descricao"];
         if ($row["codigoTarefaStatus"] == $val) {
@@ -390,9 +393,9 @@ function showrow($row, $recid) {
             <td class="dr"><select name="codigoTarefaPrioridade">
     <?php
     $sql = "select `codigoTarefaPrioridade`, `descricao` from `tarefaprioridade`";
-    $res = mysql_query($sql, $conn) or die(mysql_error());
+    $res = mysqli_query($conn, $sql) or die(mysqli_error());
 
-    while ($lp_row = mysql_fetch_assoc($res)) {
+    while ($lp_row = mysqli_fetch_assoc($res)) {
         $val = $lp_row["codigoTarefaPrioridade"];
         $caption = $lp_row["descricao"];
         if ($row["codigoTarefaPrioridade"] == $val) {
@@ -462,7 +465,7 @@ function showrecnav($a, $recid, $count) {
     ?>
     <table class="bd" border="0" cellspacing="1" cellpadding="4">
         <tr>
-            <td><a href="tarefa.php">Página Inicial</a></td>
+            <td><a href="tarefa.php">Pagina Inicial</a></td>
         <?php if ($recid > 0) { ?>
                 <td><a href="tarefa.php?a=<?php echo $a ?>&recid=<?php echo $recid - 1 ?>">Registro Anterior</a></td>
         <?php } if ($recid < $count - 1) { ?>
@@ -479,7 +482,7 @@ function showrecnav($a, $recid, $count) {
         ?>
     <table class="bd" border="0" cellspacing="1" cellpadding="4">
         <tr>
-            <td><a href="tarefa.php">Página Inicial</a></td>
+            <td><a href="tarefa.php">Pagina Inicial</a></td>
         </tr>
     </table>
     <hr size="1" noshade>
@@ -508,8 +511,8 @@ function showrecnav($a, $recid, $count) {
 function viewrec($recid) {
     $res = sql_select();
     $count = sql_getrecordcount();
-    mysql_data_seek($res, $recid);
-    $row = mysql_fetch_assoc($res);
+    mysqli_data_seek($res, $recid);
+    $row = mysqli_fetch_assoc($res);
     showrecnav("view", $recid, $count);
     ?>
     <br>
@@ -524,7 +527,7 @@ function viewrec($recid) {
         </tr>
     </table>
     <?php
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 ?>
 
@@ -533,8 +536,8 @@ function viewrec($recid) {
 function editrec($recid) {
     $res = sql_select();
     $count = sql_getrecordcount();
-    mysql_data_seek($res, $recid);
-    $row = mysql_fetch_assoc($res);
+    mysqli_data_seek($res, $recid);
+    $row = mysqli_fetch_assoc($res);
     showrecnav("edit", $recid, $count);
     ?>
     <br>
@@ -545,7 +548,7 @@ function editrec($recid) {
         <p><input type="submit" name="action" value="Gravar"></p>
     </form>
     <?php
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 ?>
 
@@ -554,8 +557,8 @@ function editrec($recid) {
 function deleterec($recid) {
     $res = sql_select();
     $count = sql_getrecordcount();
-    mysql_data_seek($res, $recid);
-    $row = mysql_fetch_assoc($res);
+    mysqli_data_seek($res, $recid);
+    $row = mysqli_fetch_assoc($res);
     showrecnav("del", $recid, $count);
     ?>
     <br>
@@ -566,34 +569,11 @@ function deleterec($recid) {
         <p><input type="submit" name="action" value="Confirmar"></p>
     </form>
     <?php
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 ?>
 
 <?php
-
-function connect() {
-    $conn = mysql_connect("127.0.0.1", "root", "");
-    mysql_select_db("agendars");
-    return $conn;
-    ;
-}
-
-function sqlvalue($val, $quote) {
-    if ($quote)
-        $tmp = sqlstr($val);
-    else
-        $tmp = $val;
-    if ($tmp == "")
-        $tmp = "NULL";
-    elseif ($quote)
-        $tmp = "'" . $tmp . "'";
-    return $tmp;
-}
-
-function sqlstr($val) {
-    return str_replace("'", "''", $val);
-}
 
 function sql_select() {
     global $conn;
@@ -616,7 +596,7 @@ function sql_select() {
         $sql .= " order by `" . sqlstr($order) . "`";
     if (isset($ordtype) && $ordtype != '')
         $sql .= " " . sqlstr($ordtype);
-    $res = mysql_query($sql, $conn) or die(mysql_error());
+    $res = mysqli_query($conn, $sql) or die(mysqli_error());
     return $res;
 }
 
@@ -637,8 +617,8 @@ function sql_getrecordcount() {
     } elseif (isset($filterstr) && $filterstr != '') {
         $sql .= " where (`codigoTarefa` like '" . $filterstr . "') or (`lp_codigoTarefaStatus` like '" . $filterstr . "') or (`dataInicio` like '" . $filterstr . "') or (`horaInicial` like '" . $filterstr . "') or (`dataLimite` like '" . $filterstr . "') or (`horaLimite` like '" . $filterstr . "') or (`titulo` like '" . $filterstr . "') or (`descricao` like '" . $filterstr . "') or (`lp_codigoTarefaPrioridade` like '" . $filterstr . "') or (`datahoracriacao` like '" . $filterstr . "')";
     }
-    $res = mysql_query($sql, $conn) or die(mysql_error());
-    $row = mysql_fetch_assoc($res);
+    $res = mysqli_query($conn, $sql) or die(mysqli_error());
+    $row = mysqli_fetch_assoc($res);
     reset($row);
     return current($row);
 }
@@ -648,7 +628,7 @@ function sql_insert() {
     global $_POST;
 
     $sql = "insert into `tarefa` (`codigoTarefaStatus`, `dataInicio`, `horaInicial`, `dataLimite`, `horaLimite`, `titulo`, `descricao`, `codigoTarefaPrioridade`) values (" . sqlvalue(@$_POST["codigoTarefaStatus"], false) . ", " . sqlvalue(@$_POST["dataInicio"], true) . ", " . sqlvalue(@$_POST["horaInicial"], true) . ", " . sqlvalue(@$_POST["dataLimite"], true) . ", " . sqlvalue(@$_POST["horaLimite"], true) . ", " . sqlvalue(@$_POST["titulo"], true) . ", " . sqlvalue(@$_POST["descricao"], true) . ", " . sqlvalue(@$_POST["codigoTarefaPrioridade"], false) . ")";
-    mysql_query($sql, $conn) or die(mysql_error());
+    mysqli_query($conn, $sql) or die(mysqli_error());
 }
 
 function sql_update() {
@@ -656,14 +636,14 @@ function sql_update() {
     global $_POST;
 
     $sql = "update `tarefa` set `codigoTarefaStatus`=" . sqlvalue(@$_POST["codigoTarefaStatus"], false) . ", `dataInicio`=" . sqlvalue(@$_POST["dataInicio"], true) . ", `horaInicial`=" . sqlvalue(@$_POST["horaInicial"], true) . ", `dataLimite`=" . sqlvalue(@$_POST["dataLimite"], true) . ", `horaLimite`=" . sqlvalue(@$_POST["horaLimite"], true) . ", `titulo`=" . sqlvalue(@$_POST["titulo"], true) . ", `descricao`=" . sqlvalue(@$_POST["descricao"], true) . ", `codigoTarefaPrioridade`=" . sqlvalue(@$_POST["codigoTarefaPrioridade"], false) . " where " . primarykeycondition();
-    mysql_query($sql, $conn) or die(mysql_error());
+    mysqli_query($conn, $sql) or die(mysqli_error());
 }
 
 function sql_delete() {
     global $conn;
 
     $sql = "delete from `tarefa` where " . primarykeycondition();
-    mysql_query($sql, $conn) or die(mysql_error());
+    mysqli_query($conn, $sql) or die(mysqli_error());
 }
 
 function primarykeycondition() {

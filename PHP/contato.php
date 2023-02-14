@@ -1,5 +1,8 @@
 <?php
 session_start();
+
+require_once 'lib.php';
+
 if (isset($_GET["order"]))
     $order = @$_GET["order"];
 if (isset($_GET["type"]))
@@ -26,7 +29,7 @@ if (!isset($filterfield) && isset($_SESSION["filter_field"]))
 <html>
     <head>
         <title>AgendaRS - [Contato]</title>
-        <meta name="generator" http-equiv="content-type" content="text/html" charset="ISO-8859-1">
+        <meta name="generator" http-equiv="content-type" content="text/html" charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
@@ -116,7 +119,7 @@ if (!isset($filterfield) && isset($_SESSION["filter_field"]))
                 if (isset($wholeonly))
                     $_SESSION["wholeonly"] = $wholeonly;
 
-                mysql_close($conn);
+                mysqli_close($conn);
                 ?>
             </td></tr></table>
     <table class="bd" width="100%"><tr><td class="hr">Todos os direitos reservados</td></tr></table>
@@ -134,7 +137,6 @@ function select() {
     global $wholeonly;
     global $order;
     global $ordtype;
-
 
     if ($a == "reset") {
         $filter = "";
@@ -161,7 +163,7 @@ function select() {
     }
     $startrec = $showrecs * ($page - 1);
     if ($startrec < $count) {
-        mysql_data_seek($res, $startrec);
+        mysqli_data_seek($res, $startrec);
     }
     $reccount = min($showrecs * $page, $count);
     ?>
@@ -179,20 +181,20 @@ function select() {
                 <td><select name="filter_field">
                         <option value="">Todos os Campos</option>
                         <option value="<?php echo "codigoContato" ?>"<?php
-    if ($filterfield == "codigoContato") {
-        echo "selected";
-    }
-    ?>><?php echo htmlspecialchars("Código") ?></option>
+                        if ($filterfield == "codigoContato") {
+                            echo "selected";
+                        }
+                        ?>><?php echo htmlspecialchars("Codigo") ?></option>
                         <option value="<?php echo "nome" ?>"<?php
-                            if ($filterfield == "nome") {
-                                echo "selected";
-                            }
-    ?>><?php echo htmlspecialchars("Nome") ?></option>
+                        if ($filterfield == "nome") {
+                            echo "selected";
+                        }
+                        ?>><?php echo htmlspecialchars("Nome") ?></option>
                         <option value="<?php echo "sobrenome" ?>"<?php
-                            if ($filterfield == "sobrenome") {
-                                echo "selected";
-                            }
-                            ?>><?php echo htmlspecialchars("Sobrenome") ?></option>
+                        if ($filterfield == "sobrenome") {
+                            echo "selected";
+                        }
+                        ?>><?php echo htmlspecialchars("Sobrenome") ?></option>
                     </select></td>
                 <td><input type="checkbox" name="wholeonly"<?php echo $checkstr ?>>Coincidir palavras completas</td>
                 </td></tr>
@@ -211,13 +213,13 @@ function select() {
             <td class="hr">&nbsp;</td>
             <td class="hr">&nbsp;</td>
             <td class="hr">&nbsp;</td>
-            <td class="hr"><a class="hr" href="contato.php?order=<?php echo "codigoContato" ?>&type=<?php echo $ordtypestr ?>"><?php echo htmlspecialchars("Código") ?></a></td>
+            <td class="hr"><a class="hr" href="contato.php?order=<?php echo "codigoContato" ?>&type=<?php echo $ordtypestr ?>"><?php echo htmlspecialchars("Codigo") ?></a></td>
             <td class="hr"><a class="hr" href="contato.php?order=<?php echo "nome" ?>&type=<?php echo $ordtypestr ?>"><?php echo htmlspecialchars("Nome") ?></a></td>
             <td class="hr"><a class="hr" href="contato.php?order=<?php echo "sobrenome" ?>&type=<?php echo $ordtypestr ?>"><?php echo htmlspecialchars("Sobrenome") ?></a></td>
         </tr>
         <?php
         for ($i = $startrec; $i < $reccount; $i++) {
-            $row = mysql_fetch_assoc($res);
+            $row = mysqli_fetch_assoc($res);
             $style = "dr";
             if ($i % 2 != 0) {
                 $style = "sr";
@@ -231,10 +233,10 @@ function select() {
                 <td class="<?php echo $style ?>"><?php echo htmlspecialchars($row["nome"]) ?></td>
                 <td class="<?php echo $style ?>"><?php echo htmlspecialchars($row["sobrenome"]) ?></td>
             </tr>
-        <?php
-    }
-    mysql_free_result($res);
-    ?>
+            <?php
+        }
+        mysqli_free_result($res);
+        ?>
     </table>
     <br>
     <?php showpagenav($page, $pagecount); ?>
@@ -277,10 +279,10 @@ function showroweditor($row, $iseditmode) {
     </table>
 <?php } ?>
 
-        <?php
+<?php
 
-        function showpagenav($page, $pagecount) {
-            ?>
+function showpagenav($page, $pagecount) {
+    ?>
     <table class="bd" border="0" cellspacing="1" cellpadding="4">
         <tr>
             <td><a href="contato.php?a=add">Inserir Registro</a>&nbsp;</td>
@@ -308,36 +310,36 @@ function showroweditor($row, $iseditmode) {
                                 <td><b><?php echo $j ?></b></td>
                             <?php } else { ?>
                                 <td><a href="contato.php?page=<?php echo $j ?>"><?php echo $j ?></a></td>
-                            <?php
+                                <?php
                             }
                         }
                     } else {
                         ?>
                         <td><a href="contato.php?page=<?php echo $startpage ?>"><?php echo $startpage . "..." . $count ?></a></td>
-            <?php
+                        <?php
+                    }
+                }
             }
-        }
-    }
-    ?>
-    <?php if ($page < $pagecount) { ?>
+            ?>
+            <?php if ($page < $pagecount) { ?>
                 <td>&nbsp;<a href="contato.php?page=<?php echo $page + 1 ?>">Pr&oacute;ximo&nbsp;&gt;&gt;</a>&nbsp;</td>
-    <?php } ?>
+            <?php } ?>
         </tr>
     </table>
-        <?php } ?>
+<?php } ?>
 
-        <?php
+<?php
 
-        function showrecnav($a, $recid, $count) {
-            ?>
+function showrecnav($a, $recid, $count) {
+    ?>
     <table class="bd" border="0" cellspacing="1" cellpadding="4">
         <tr>
-            <td><a href="contato.php">Página Inicial</a></td>
-    <?php if ($recid > 0) { ?>
+            <td><a href="contato.php">Pagina Inicial</a></td>
+            <?php if ($recid > 0) { ?>
                 <td><a href="contato.php?a=<?php echo $a ?>&recid=<?php echo $recid - 1 ?>">Registro Anterior</a></td>
-    <?php } if ($recid < $count - 1) { ?>
+            <?php } if ($recid < $count - 1) { ?>
                 <td><a href="contato.php?a=<?php echo $a ?>&recid=<?php echo $recid + 1 ?>">Próximo Registro</a></td>
-    <?php } ?>
+            <?php } ?>
         </tr>
     </table>
     <hr size="1" noshade>
@@ -349,19 +351,19 @@ function addrec() {
     ?>
     <table class="bd" border="0" cellspacing="1" cellpadding="4">
         <tr>
-            <td><a href="contato.php">Página Inicial</a></td>
+            <td><a href="contato.php">Pagina Inicial</a></td>
         </tr>
     </table>
     <hr size="1" noshade>
     <form enctype="multipart/form-data" action="contato.php" method="post">
         <p><input type="hidden" name="sql" value="insert"></p>
-    <?php
-    $row = array(
-        "codigoContato" => "",
-        "nome" => "",
-        "sobrenome" => "");
-    showroweditor($row, false);
-    ?>
+        <?php
+        $row = array(
+            "codigoContato" => "",
+            "nome" => "",
+            "sobrenome" => "");
+        showroweditor($row, false);
+        ?>
         <p><input type="submit" name="action" value="Gravar"></p>
     </form>
 <?php } ?>
@@ -371,8 +373,8 @@ function addrec() {
 function viewrec($recid) {
     $res = sql_select();
     $count = sql_getrecordcount();
-    mysql_data_seek($res, $recid);
-    $row = mysql_fetch_assoc($res);
+    mysqli_data_seek($res, $recid);
+    $row = mysqli_fetch_assoc($res);
     showrecnav("view", $recid, $count);
     ?>
     <br>
@@ -387,7 +389,7 @@ function viewrec($recid) {
         </tr>
     </table>
     <?php
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 ?>
 
@@ -396,19 +398,19 @@ function viewrec($recid) {
 function editrec($recid) {
     $res = sql_select();
     $count = sql_getrecordcount();
-    mysql_data_seek($res, $recid);
-    $row = mysql_fetch_assoc($res);
+    mysqli_data_seek($res, $recid);
+    $row = mysqli_fetch_assoc($res);
     showrecnav("edit", $recid, $count);
     ?>
     <br>
     <form enctype="multipart/form-data" action="contato.php" method="post">
         <input type="hidden" name="sql" value="update">
         <input type="hidden" name="xcodigoContato" value="<?php echo $row["codigoContato"] ?>">
-    <?php showroweditor($row, true); ?>
+        <?php showroweditor($row, true); ?>
         <p><input type="submit" name="action" value="Gravar"></p>
     </form>
     <?php
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 ?>
 
@@ -417,45 +419,23 @@ function editrec($recid) {
 function deleterec($recid) {
     $res = sql_select();
     $count = sql_getrecordcount();
-    mysql_data_seek($res, $recid);
-    $row = mysql_fetch_assoc($res);
+    mysqli_data_seek($res, $recid);
+    $row = mysqli_fetch_assoc($res);
     showrecnav("del", $recid, $count);
     ?>
     <br>
     <form action="contato.php" method="post">
         <input type="hidden" name="sql" value="delete">
         <input type="hidden" name="xcodigoContato" value="<?php echo $row["codigoContato"] ?>">
-    <?php showrow($row, $recid) ?>
+        <?php showrow($row, $recid) ?>
         <p><input type="submit" name="action" value="Confirmar"></p>
     </form>
     <?php
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 ?>
 
 <?php
-
-function connect() {
-    $conn = mysql_connect("127.0.0.1", "root", "");
-    mysql_select_db("agendars");
-    return $conn;
-}
-
-function sqlvalue($val, $quote) {
-    if ($quote)
-        $tmp = sqlstr($val);
-    else
-        $tmp = $val;
-    if ($tmp == "")
-        $tmp = "NULL";
-    elseif ($quote)
-        $tmp = "'" . $tmp . "'";
-    return $tmp;
-}
-
-function sqlstr($val) {
-    return str_replace("'", "''", $val);
-}
 
 function sql_select() {
     global $conn;
@@ -478,7 +458,7 @@ function sql_select() {
         $sql .= " order by `" . sqlstr($order) . "`";
     if (isset($ordtype) && $ordtype != '')
         $sql .= " " . sqlstr($ordtype);
-    $res = mysql_query($sql, $conn) or die(mysql_error());
+    $res = mysqli_query($conn, $sql) or die(mysqli_error());
     return $res;
 }
 
@@ -499,8 +479,8 @@ function sql_getrecordcount() {
     } elseif (isset($filterstr) && $filterstr != '') {
         $sql .= " where (`codigoContato` like '" . $filterstr . "') or (`nome` like '" . $filterstr . "') or (`sobrenome` like '" . $filterstr . "')";
     }
-    $res = mysql_query($sql, $conn) or die(mysql_error());
-    $row = mysql_fetch_assoc($res);
+    $res = mysqli_query($conn, $sql) or die(mysqli_error());
+    $row = mysqli_fetch_assoc($res);
     reset($row);
     return current($row);
 }
@@ -510,7 +490,7 @@ function sql_insert() {
     global $_POST;
 
     $sql = "insert into `contato` (`nome`, `sobrenome`) values (" . sqlvalue(@$_POST["nome"], true) . ", " . sqlvalue(@$_POST["sobrenome"], true) . ")";
-    mysql_query($sql, $conn) or die(mysql_error());
+    mysqli_query($conn, $sql) or die(mysqli_error());
 }
 
 function sql_update() {
@@ -518,14 +498,14 @@ function sql_update() {
     global $_POST;
 
     $sql = "update `contato` set `nome`=" . sqlvalue(@$_POST["nome"], true) . ", `sobrenome`=" . sqlvalue(@$_POST["sobrenome"], true) . " where " . primarykeycondition();
-    mysql_query($sql, $conn) or die(mysql_error());
+    mysqli_query($conn, $sql) or die(mysqli_error());
 }
 
 function sql_delete() {
     global $conn;
 
     $sql = "delete from `contato` where " . primarykeycondition();
-    mysql_query($sql, $conn) or die(mysql_error());
+    mysqli_query($conn, $sql) or die(mysqli_error());
 }
 
 function primarykeycondition() {

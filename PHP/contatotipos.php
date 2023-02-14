@@ -1,5 +1,8 @@
 <?php
 session_start();
+
+require_once 'lib.php';
+
 if (isset($_GET["order"]))
     $order = @$_GET["order"];
 if (isset($_GET["type"]))
@@ -116,7 +119,7 @@ if (!isset($filterfield) && isset($_SESSION["filter_field"]))
                 if (isset($wholeonly))
                     $_SESSION["wholeonly"] = $wholeonly;
 
-                mysql_close($conn);
+                mysqli_close($conn);
                 ?>
             </td></tr></table>
     <table class="bd" width="100%"><tr><td class="hr">Todos os direitos reservados</td></tr></table>
@@ -225,7 +228,7 @@ function select() {
             </tr>
             <?php
         }
-        mysql_free_result($res);
+        mysqli_free_result($res);
         ?>
     </table>
     <br>
@@ -454,28 +457,6 @@ function deleterec($recid) {
 
 <?php
 
-function connect() {
-    $conn = mysql_connect("127.0.0.1", "root", "");
-    mysql_select_db("agendars");
-    return $conn;
-}
-
-function sqlvalue($val, $quote) {
-    if ($quote)
-        $tmp = sqlstr($val);
-    else
-        $tmp = $val;
-    if ($tmp == "")
-        $tmp = "NULL";
-    elseif ($quote)
-        $tmp = "'" . $tmp . "'";
-    return $tmp;
-}
-
-function sqlstr($val) {
-    return str_replace("'", "''", $val);
-}
-
 function sql_select() {
     global $conn;
     global $order;
@@ -497,7 +478,7 @@ function sql_select() {
         $sql .= " order by `" . sqlstr($order) . "`";
     if (isset($ordtype) && $ordtype != '')
         $sql .= " " . sqlstr($ordtype);
-    $res = mysql_query($sql, $conn) or die(mysql_error());
+    $res = mysqli_query($conn, $sql) or die(mysql_error());
     return $res;
 }
 
@@ -518,8 +499,8 @@ function sql_getrecordcount() {
     } elseif (isset($filterstr) && $filterstr != '') {
         $sql .= " where (`lp_codigoContato` like '" . $filterstr . "') or (`lp_codigoTipoContato` like '" . $filterstr . "')";
     }
-    $res = mysql_query($sql, $conn) or die(mysql_error());
-    $row = mysql_fetch_assoc($res);
+    $res = mysqli_query($conn, $sql) or die(mysql_error());
+    $row = mysqli_fetch_assoc($res);
     reset($row);
     return current($row);
 }

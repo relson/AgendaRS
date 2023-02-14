@@ -1,5 +1,8 @@
 <?php
 session_start();
+
+require_once 'lib.php';
+
 if (isset($_GET["order"]))
     $order = @$_GET["order"];
 if (isset($_GET["type"]))
@@ -116,7 +119,7 @@ if (!isset($filterfield) && isset($_SESSION["filter_field"]))
                 if (isset($wholeonly))
                     $_SESSION["wholeonly"] = $wholeonly;
 
-                mysql_close($conn);
+                mysqli_close($conn);
                 ?>
             </td></tr></table>
     <table class="bd" width="100%"><tr><td class="hr">Todos os direitos reservados</td></tr></table>
@@ -161,7 +164,7 @@ function select() {
     }
     $startrec = $showrecs * ($page - 1);
     if ($startrec < $count) {
-        mysql_data_seek($res, $startrec);
+        mysqli_data_seek($res, $startrec);
     }
     $reccount = min($showrecs * $page, $count);
     ?>
@@ -181,7 +184,7 @@ function select() {
     if ($filterfield == "codigoEndereco") {
         echo "selected";
     }
-    ?>><?php echo htmlspecialchars("Código") ?></option>
+    ?>><?php echo htmlspecialchars("Codigo") ?></option>
                         <option value="<?php echo "lp_codigoTipoEndereco" ?>"<?php
                             if ($filterfield == "lp_codigoTipoEndereco") {
                                 echo "selected";
@@ -191,7 +194,7 @@ function select() {
                             if ($filterfield == "endereco") {
                                 echo "selected";
                             }
-                            ?>><?php echo htmlspecialchars("Endereço") ?></option>
+                            ?>><?php echo htmlspecialchars("Endereco") ?></option>
                     </select></td>
                 <td><input type="checkbox" name="wholeonly"<?php echo $checkstr ?>>Coincidir palavras completas</td>
                 </td></tr>
@@ -210,13 +213,13 @@ function select() {
             <td class="hr">&nbsp;</td>
             <td class="hr">&nbsp;</td>
             <td class="hr">&nbsp;</td>
-            <td class="hr"><a class="hr" href="endereco.php?order=<?php echo "codigoEndereco" ?>&type=<?php echo $ordtypestr ?>"><?php echo htmlspecialchars("Código") ?></a></td>
+            <td class="hr"><a class="hr" href="endereco.php?order=<?php echo "codigoEndereco" ?>&type=<?php echo $ordtypestr ?>"><?php echo htmlspecialchars("Codigo") ?></a></td>
             <td class="hr"><a class="hr" href="endereco.php?order=<?php echo "lp_codigoTipoEndereco" ?>&type=<?php echo $ordtypestr ?>"><?php echo htmlspecialchars("Tipo") ?></a></td>
-            <td class="hr"><a class="hr" href="endereco.php?order=<?php echo "endereco" ?>&type=<?php echo $ordtypestr ?>"><?php echo htmlspecialchars("Endereço") ?></a></td>
+            <td class="hr"><a class="hr" href="endereco.php?order=<?php echo "endereco" ?>&type=<?php echo $ordtypestr ?>"><?php echo htmlspecialchars("Endereco") ?></a></td>
         </tr>
         <?php
         for ($i = $startrec; $i < $reccount; $i++) {
-            $row = mysql_fetch_assoc($res);
+            $row = mysqli_fetch_assoc($res);
             $style = "dr";
             if ($i % 2 != 0) {
                 $style = "sr";
@@ -232,7 +235,7 @@ function select() {
             </tr>
         <?php
     }
-    mysql_free_result($res);
+    mysqli_free_result($res);
     ?>
     </table>
     <br>
@@ -245,7 +248,7 @@ function showrow($row, $recid) {
     ?>
     <table class="tbl" border="0" cellspacing="1" cellpadding="5"width="50%">
         <tr>
-            <td class="hr"><?php echo htmlspecialchars("Código") . "&nbsp;" ?></td>
+            <td class="hr"><?php echo htmlspecialchars("Codigo") . "&nbsp;" ?></td>
             <td class="dr"><?php echo htmlspecialchars($row["codigoEndereco"]) ?></td>
         </tr>
         <tr>
@@ -253,7 +256,7 @@ function showrow($row, $recid) {
             <td class="dr"><?php echo htmlspecialchars($row["lp_codigoTipoEndereco"]) ?></td>
         </tr>
         <tr>
-            <td class="hr"><?php echo htmlspecialchars("Endereço") . "&nbsp;" ?></td>
+            <td class="hr"><?php echo htmlspecialchars("Endereco") . "&nbsp;" ?></td>
             <td class="dr"><?php echo htmlspecialchars($row["endereco"]) ?></td>
         </tr>
     </table>
@@ -270,9 +273,9 @@ function showroweditor($row, $iseditmode) {
             <td class="dr"><select name="codigoTipoEndereco">
                     <?php
                     $sql = "select `codigoTipoEndereco`, `descricao` from `tipoendereco`";
-                    $res = mysql_query($sql, $conn) or die(mysql_error());
+                    $res = mysqli_query($conn, $sql) or die(mysqli_error());
 
-                    while ($lp_row = mysql_fetch_assoc($res)) {
+                    while ($lp_row = mysqli_fetch_assoc($res)) {
                         $val = $lp_row["codigoTipoEndereco"];
                         $caption = $lp_row["descricao"];
                         if ($row["codigoTipoEndereco"] == $val) {
@@ -346,7 +349,7 @@ function showroweditor($row, $iseditmode) {
             ?>
     <table class="bd" border="0" cellspacing="1" cellpadding="4">
         <tr>
-            <td><a href="endereco.php">Página Inicial</a></td>
+            <td><a href="endereco.php">Pagina Inicial</a></td>
     <?php if ($recid > 0) { ?>
                 <td><a href="endereco.php?a=<?php echo $a ?>&recid=<?php echo $recid - 1 ?>">Registro Anterior</a></td>
     <?php } if ($recid < $count - 1) { ?>
@@ -363,7 +366,7 @@ function addrec() {
     ?>
     <table class="bd" border="0" cellspacing="1" cellpadding="4">
         <tr>
-            <td><a href="endereco.php">Página Inicial</a></td>
+            <td><a href="endereco.php">Pagina Inicial</a></td>
         </tr>
     </table>
     <hr size="1" noshade>
@@ -385,8 +388,8 @@ function addrec() {
 function viewrec($recid) {
     $res = sql_select();
     $count = sql_getrecordcount();
-    mysql_data_seek($res, $recid);
-    $row = mysql_fetch_assoc($res);
+    mysqli_data_seek($res, $recid);
+    $row = mysqli_fetch_assoc($res);
     showrecnav("view", $recid, $count);
     ?>
     <br>
@@ -401,7 +404,7 @@ function viewrec($recid) {
         </tr>
     </table>
     <?php
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 ?>
 
@@ -410,8 +413,8 @@ function viewrec($recid) {
 function editrec($recid) {
     $res = sql_select();
     $count = sql_getrecordcount();
-    mysql_data_seek($res, $recid);
-    $row = mysql_fetch_assoc($res);
+    mysqli_data_seek($res, $recid);
+    $row = mysqli_fetch_assoc($res);
     showrecnav("edit", $recid, $count);
     ?>
     <br>
@@ -422,7 +425,7 @@ function editrec($recid) {
         <p><input type="submit" name="action" value="Gravar"></p>
     </form>
     <?php
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 ?>
 
@@ -431,8 +434,8 @@ function editrec($recid) {
 function deleterec($recid) {
     $res = sql_select();
     $count = sql_getrecordcount();
-    mysql_data_seek($res, $recid);
-    $row = mysql_fetch_assoc($res);
+    mysqli_data_seek($res, $recid);
+    $row = mysqli_fetch_assoc($res);
     showrecnav("del", $recid, $count);
     ?>
     <br>
@@ -443,33 +446,11 @@ function deleterec($recid) {
         <p><input type="submit" name="action" value="Confirmar"></p>
     </form>
     <?php
-    mysql_free_result($res);
+    mysqli_free_result($res);
 }
 ?>
 
 <?php
-
-function connect() {
-    $conn = mysql_connect("127.0.0.1", "root", "");
-    mysql_select_db("agendars");
-    return $conn;
-}
-
-function sqlvalue($val, $quote) {
-    if ($quote)
-        $tmp = sqlstr($val);
-    else
-        $tmp = $val;
-    if ($tmp == "")
-        $tmp = "NULL";
-    elseif ($quote)
-        $tmp = "'" . $tmp . "'";
-    return $tmp;
-}
-
-function sqlstr($val) {
-    return str_replace("'", "''", $val);
-}
 
 function sql_select() {
     global $conn;
@@ -492,7 +473,7 @@ function sql_select() {
         $sql .= " order by `" . sqlstr($order) . "`";
     if (isset($ordtype) && $ordtype != '')
         $sql .= " " . sqlstr($ordtype);
-    $res = mysql_query($sql, $conn) or die(mysql_error());
+    $res = mysqli_query($conn, $sql) or die(mysqli_error());
     return $res;
 }
 
@@ -513,8 +494,8 @@ function sql_getrecordcount() {
     } elseif (isset($filterstr) && $filterstr != '') {
         $sql .= " where (`codigoEndereco` like '" . $filterstr . "') or (`lp_codigoTipoEndereco` like '" . $filterstr . "') or (`endereco` like '" . $filterstr . "')";
     }
-    $res = mysql_query($sql, $conn) or die(mysql_error());
-    $row = mysql_fetch_assoc($res);
+    $res = mysqli_query($conn, $sql) or die(mysqli_error());
+    $row = mysqli_fetch_assoc($res);
     reset($row);
     return current($row);
 }
@@ -524,7 +505,7 @@ function sql_insert() {
     global $_POST;
 
     $sql = "insert into `endereco` (`codigoTipoEndereco`, `endereco`) values (" . sqlvalue(@$_POST["codigoTipoEndereco"], false) . ", " . sqlvalue(@$_POST["endereco"], true) . ")";
-    mysql_query($sql, $conn) or die(mysql_error());
+    mysqli_query($conn, $sql) or die(mysqli_error());
 }
 
 function sql_update() {
@@ -532,14 +513,14 @@ function sql_update() {
     global $_POST;
 
     $sql = "update `endereco` set `codigoTipoEndereco`=" . sqlvalue(@$_POST["codigoTipoEndereco"], false) . ", `endereco`=" . sqlvalue(@$_POST["endereco"], true) . " where " . primarykeycondition();
-    mysql_query($sql, $conn) or die(mysql_error());
+    mysqli_query($conn, $sql) or die(mysqli_error());
 }
 
 function sql_delete() {
     global $conn;
 
     $sql = "delete from `endereco` where " . primarykeycondition();
-    mysql_query($sql, $conn) or die(mysql_error());
+    mysqli_query($conn, $sql) or die(mysqli_error());
 }
 
 function primarykeycondition() {
