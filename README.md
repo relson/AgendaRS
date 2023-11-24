@@ -24,6 +24,6 @@ Uma versão com Java Swing
 A fazer
 -------
 1. ~Melhorar documentação~
-2. Separar os projetos em repositórios separados
+2. Separar os projetos em repositórios diferentes
 3. Refatorar Projeto VB6
 4. Arquivar projeto VB6
