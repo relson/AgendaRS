@@ -175,7 +175,6 @@ Begin VB.Form frmCadastroContato
          EndProperty
          BeginProperty Tab4 {0713F341-850A-101B-AFC0-4210102A8DA7} 
             Caption         =   "Tipo do &Contato"
-            Key             =   ""
             Object.Tag             =   ""
             ImageVarType    =   2
          EndProperty
@@ -602,19 +601,6 @@ Private Sub insereContatoTipos(ByVal lngCodigoContato As Long, ByVal lngCodigoTi
              "    VALUES(" & lngCodigoContato & "," & lngCodigoTipoContato & ")"
              
     Call mdiMain.cn.Execute(strSQL)
-End Sub
-
-' TODO: Tratar edicao e tratar o foco quando for 0800
-Private Sub mskTelefone_Change()
-    ' Se for de sao paulo adiciona mais um numero
-    If mskTelefone.Text = "(11) ____-____" Then
-        mskTelefone.Mask = "(##) # ####-####"
-        mskTelefone.Text = "(11) _ ____-____"
-    ' Permite tambem telefone 0800
-    ElseIf mskTelefone.Text = "(08) ____-____" Then
-        mskTelefone.Mask = "#### ### ####"
-        mskTelefone.Text = "08__ ___ ____"
-    End If
 End Sub
 
 Private Sub mskTelefone_GotFocus()

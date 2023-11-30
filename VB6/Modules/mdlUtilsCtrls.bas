@@ -74,7 +74,7 @@ End Sub
 ' Adaptação Sebastião Relson
 Public Sub tratarKeyPressComboBox(ByVal objCboBox As ComboBox, ByRef intKeyAscii As Integer)
     
-    Dim CB As Long
+    Dim lngListIndex As Long
     Dim FindString As String
     Const CB_ERR = (-1)
     Const CB_FINDSTRING = &H14C
@@ -89,10 +89,10 @@ Public Sub tratarKeyPressComboBox(ByVal objCboBox As ComboBox, ByRef intKeyAscii
             FindString = Left$(.Text, .SelStart) & Chr$(intKeyAscii)
         End If
         
-        CB = SendMessage(.hWnd, CB_FINDSTRING, -1, ByVal FindString)
+        lngListIndex = SendMessage(.hWnd, CB_FINDSTRING, -1, ByVal FindString)
         
-        If CB <> CB_ERR Then
-            .ListIndex = CB
+        If lngListIndex <> CB_ERR Then
+            .ListIndex = lngListIndex
             .SelStart = Len(FindString)
             .SelLength = Len(.Text) - .SelStart
             intKeyAscii = 0

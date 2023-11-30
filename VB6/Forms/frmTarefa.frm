@@ -113,54 +113,41 @@ Begin VB.Form frmTarefa
          NumTabs         =   6
          BeginProperty Tab1 {0713F341-850A-101B-AFC0-4210102A8DA7} 
             Caption         =   "&Não Iniciadas"
+            Key             =   ""
             Object.Tag             =   ""
             ImageVarType    =   2
          EndProperty
          BeginProperty Tab2 {0713F341-850A-101B-AFC0-4210102A8DA7} 
             Caption         =   "Em &Andamento"
+            Key             =   ""
             Object.Tag             =   ""
             ImageVarType    =   2
          EndProperty
          BeginProperty Tab3 {0713F341-850A-101B-AFC0-4210102A8DA7} 
             Caption         =   "&Pendente"
+            Key             =   ""
             Object.Tag             =   ""
             ImageVarType    =   2
          EndProperty
          BeginProperty Tab4 {0713F341-850A-101B-AFC0-4210102A8DA7} 
             Caption         =   "Concluída"
+            Key             =   ""
             Object.Tag             =   ""
             ImageVarType    =   2
          EndProperty
          BeginProperty Tab5 {0713F341-850A-101B-AFC0-4210102A8DA7} 
             Caption         =   "Cancelada"
+            Key             =   ""
             Object.Tag             =   ""
             ImageVarType    =   2
          EndProperty
          BeginProperty Tab6 {0713F341-850A-101B-AFC0-4210102A8DA7} 
             Caption         =   "&Todas"
+            Key             =   ""
             Object.Tag             =   ""
             ImageVarType    =   2
          EndProperty
       EndProperty
-   End
-   Begin VB.Menu mnuTarefaStatus 
-      Caption         =   "Status"
-      Visible         =   0   'False
-      Begin VB.Menu mnuTarefaStatusNaoIniciado 
-         Caption         =   "&Não Iniciado"
-      End
-      Begin VB.Menu mnuTarefaStatusEmAndamento 
-         Caption         =   "Em &Andamento"
-      End
-      Begin VB.Menu mnuTarefaStatusPendente 
-         Caption         =   "&Pendente"
-      End
-      Begin VB.Menu mnuTarefaStatusConcluida 
-         Caption         =   "Concluí&da"
-      End
-      Begin VB.Menu mnuTarefaStatusCancelada 
-         Caption         =   "Cance&lada"
-      End
    End
 End
 Attribute VB_Name = "frmTarefa"
@@ -345,9 +332,9 @@ Trata_Erro:
         blnTratadoErro = True
         carregarTarefas
     Else
-        'Call MsgBox("Não foi possível carregar a lista de tarefas." & vbCrLf &
-        '    "Erro Nº" & vbTab & ": " & Err.Number & vbCrLf & _
-        '    "Descrição" & vbTab & ": " & Err.Description, vbCritical, "Erro")
+        Call MsgBox("Não foi possível carregar a lista de tarefas." & vbCrLf & _
+            "Erro Nº" & vbTab & ": " & Err.Number & vbCrLf & _
+            "Descrição" & vbTab & ": " & Err.Description, vbCritical, "Erro")
     End If
 End Sub
 
@@ -365,20 +352,6 @@ End Sub
 
 Private Sub ltwTarefa_DblClick()
     cmdAlterar_Click
-End Sub
-
-Private Sub ltwTarefa_KeyUp(KeyCode As Integer, Shift As Integer)
-    If (KeyCode = KeyCodeConstants.vbKeyRButton Or _
-        KeyCode = KeyCodeConstants.vbKeySpace) Then
-        
-        Call PopupMenu(Me.mnuTarefaStatus, , ltwTarefa.SelectedItem.Top, ltwTarefa.SelectedItem.Left)
-    End If
-End Sub
-
-Private Sub ltwTarefa_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
-    If (Button = vbRightButton) Then
-        Call PopupMenu(Me.mnuTarefaStatus)
-    End If
 End Sub
 
 Private Sub tabTarefas_Click()
@@ -421,8 +394,6 @@ Public Function obterNomeStatusTarefa(ByVal eCodigoStatus As STATUS_TAREFA) As S
 End Function
 
 Private Sub criarColunaCodigoStatus()
-
-    On Error GoTo Trata_Erro
     
     Dim cn As ADODB.Connection
     
@@ -438,7 +409,5 @@ Private Sub criarColunaCodigoStatus()
     strSQL = "UPDATE Tarefa SET codigoPrioridade = 1"
     
     Call cn.Execute(strSQL)
-    Exit Sub
-Trata_Erro:
-    Err.Clear
+    
 End Sub

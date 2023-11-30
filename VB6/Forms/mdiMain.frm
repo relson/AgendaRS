@@ -3,7 +3,7 @@ Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
 Begin VB.MDIForm mdiMain 
    BackColor       =   &H8000000C&
    Caption         =   "AgendaRS"
-   ClientHeight    =   7800
+   ClientHeight    =   6870
    ClientLeft      =   165
    ClientTop       =   555
    ClientWidth     =   11820
@@ -13,15 +13,15 @@ Begin VB.MDIForm mdiMain
    WindowState     =   2  'Maximized
    Begin ComctlLib.Toolbar tbrMain 
       Align           =   1  'Align Top
-      Height          =   630
+      Height          =   900
       Left            =   0
       TabIndex        =   0
       Top             =   0
       Width           =   11820
       _ExtentX        =   20849
-      _ExtentY        =   1111
-      ButtonWidth     =   1535
-      ButtonHeight    =   953
+      _ExtentY        =   1588
+      ButtonWidth     =   1667
+      ButtonHeight    =   1429
       Appearance      =   1
       _Version        =   327682
       BeginProperty Buttons {0713E452-850A-101B-AFC0-4210102A8DA7} 
@@ -90,49 +90,24 @@ Begin VB.MDIForm mdiMain
          EndProperty
       EndProperty
    End
-   Begin ComctlLib.ImageList imgLstToolBar 
-      Left            =   870
-      Top             =   2460
+   Begin ComctlLib.ImageList imgListToolBar 
+      Left            =   5640
+      Top             =   3150
       _ExtentX        =   1005
       _ExtentY        =   1005
       BackColor       =   -2147483643
-      ImageWidth      =   16
-      ImageHeight     =   16
-      MaskColor       =   14803425
-      UseMaskColor    =   0   'False
+      ImageWidth      =   32
+      ImageHeight     =   32
+      MaskColor       =   12632256
       _Version        =   327682
       BeginProperty Images {0713E8C2-850A-101B-AFC0-4210102A8DA7} 
-         NumListImages   =   8
+         NumListImages   =   2
          BeginProperty ListImage1 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
             Picture         =   "mdiMain.frx":0442
             Key             =   ""
          EndProperty
          BeginProperty ListImage2 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "mdiMain.frx":061C
-            Key             =   ""
-         EndProperty
-         BeginProperty ListImage3 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "mdiMain.frx":07F6
-            Key             =   ""
-         EndProperty
-         BeginProperty ListImage4 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "mdiMain.frx":09D0
-            Key             =   ""
-         EndProperty
-         BeginProperty ListImage5 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "mdiMain.frx":0BAA
-            Key             =   ""
-         EndProperty
-         BeginProperty ListImage6 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "mdiMain.frx":0D84
-            Key             =   ""
-         EndProperty
-         BeginProperty ListImage7 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "mdiMain.frx":0F5E
-            Key             =   ""
-         EndProperty
-         BeginProperty ListImage8 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "mdiMain.frx":1138
+            Picture         =   "mdiMain.frx":075C
             Key             =   ""
          EndProperty
       EndProperty
@@ -251,128 +226,128 @@ Public Property Let autoOrganizarJanelas(ByVal blnAutoOrganizarJanelas As Boolea
 End Property
 
 Public Property Get atualModoOrganizacaoJanelas() As FormArrangeConstants
-    atualModoOrganizacaoJanelas = mFacAtualModoOrganizacaoJanelas
+     atualModoOrganizacaoJanelas = mFacAtualModoOrganizacaoJanelas
 End Property
 
 Public Property Let atualModoOrganizacaoJanelas(ByVal facAtualModoOrganizacaoJanelas As FormArrangeConstants)
-    mFacAtualModoOrganizacaoJanelas = facAtualModoOrganizacaoJanelas
+     mFacAtualModoOrganizacaoJanelas = facAtualModoOrganizacaoJanelas
 End Property
 
 '--
 Private Sub MDIForm_Load()
 
-
+    
     mdiMain.mnuAbrir.Visible = False
     mdiMain.mnuSeparador05.Visible = False
-
+    
     Call mdlUtilsCtrls.configurarCorDeFundo(Me)
-
+           
     Set cn = mdlAcessoDados.obterConexao()
-
+     
     App.Title = "AgendaRS - Versão " & App.Major & "." & Format$(App.Minor, "00") & IIf(App.Revision > 0, " Revisão " & Format$(App.Revision, "000"), "")
-
+    
     Me.Caption = App.Title
-
+    
 End Sub
 
 Private Sub MDIForm_QueryUnload(Cancel As Integer, UnloadMode As Integer)
-
+    
     Select Case UnloadMode
         ' Se clicado no botão fechar
-    Case QueryUnloadConstants.vbFormControlMenu
-        Cancel = True
-        Me.Hide
-        Load frmIconeBandeja
+        Case QueryUnloadConstants.vbFormControlMenu
+            Cancel = True
+            Me.Hide
+            Load frmIconeBandeja
     End Select
 End Sub
 
 Private Sub MDIForm_Resize()
-
+        
     If Me.WindowState = FormWindowStateConstants.vbMinimized Then
-
+    
         Me.Hide
         Load frmIconeBandeja
-
+        
     End If
-
+    
 End Sub
 
 Private Sub MDIForm_Unload(Cancel As Integer)
-
+    
     If MsgBox("Deseja finalizar o Aplicativo?", vbQuestion + vbYesNo + vbDefaultButton2) = vbNo Then
         Cancel = True
         Exit Sub
     End If
-
+    
     End
-
+    
 End Sub
 
 Private Sub mnuAbrir_Click()
-
+    
     mdlIconeBandeja.removerIconeDaBandeja
     Me.WindowState = vbMaximized
-
+    
     Me.Show
-
-
+    
+    
 End Sub
 
 Private Sub mnuAnotacao_Click()
-
+    
     On Error GoTo TrataErro
-
+        
     Call mdlIconeBandeja.removerIconeDaBandeja
     If Me.WindowState = vbMinimized Then
         Me.WindowState = vbMaximized
     End If
     frmAnotacao.Show
-
+    
     If Me.autoOrganizarJanelas Then Arrange Me.atualModoOrganizacaoJanelas
-
+    
     Exit Sub
 TrataErro:
     MsgBox "Erro ao tentar abrir o formulário de anotações" & vbCrLf & Err.Number & vbCrLf & Err.Description, vbExclamation
 End Sub
 
 Private Sub mnuAutoOrganizarJanelas_Click()
-
+    
     mnuAutoOrganizarJanelas.Checked = Not mnuAutoOrganizarJanelas.Checked
-
+    
     Me.autoOrganizarJanelas = mnuAutoOrganizarJanelas.Checked
-
+    
 End Sub
 
 Private Sub mnuDuvida_Click()
-
+    
     Call mdlIconeBandeja.removerIconeDaBandeja
     If Me.WindowState = vbMinimized Then
         Me.WindowState = vbMaximized
     End If
     frmDuvida.Show
-
+    
 End Sub
 
 Private Sub mnuOrganizarJanelasSub_Click(Index As Integer)
-
+    
     Dim i As Integer
-
+    
     Arrange Index
-
+    
     Me.atualModoOrganizacaoJanelas = Index
-
+    
     With mnuOrganizarJanelasSub
         For i = .LBound To .UBound
             .Item(i).Checked = (Index = i)
         Next
     End With
-
+    
 End Sub
 
 Private Sub mnuPreferencias_Click()
-
+    
     frmPreferencias.Show vbModal
-
+    
 End Sub
 
 Private Sub mnuSair_Click()
@@ -383,51 +358,51 @@ End Sub
 Private Sub mnuSubCadastro_Click(Index As Integer)
 
     Dim f As IToolBarControles
-
+    
     Select Case Index
-    Case 0
-
-        Call mdlIconeBandeja.removerIconeDaBandeja
-        If Me.WindowState = vbMinimized Then
-            Me.WindowState = vbMaximized
-        End If
-        frmContato.Show
-
-        Set f = frmContato
-
-        'f.limpar
-
+        Case 0
+            
+            Call mdlIconeBandeja.removerIconeDaBandeja
+            If Me.WindowState = vbMinimized Then
+                Me.WindowState = vbMaximized
+            End If
+            frmContato.Show
+            
+            Set f = frmContato
+            
+            'f.limpar
+            
     End Select
-
+    
     If Me.autoOrganizarJanelas Then Arrange Me.atualModoOrganizacaoJanelas
-
+    
 End Sub
 
 Private Sub mnuSugestao_Click()
-
+    
     Call mdlIconeBandeja.removerIconeDaBandeja
     If Me.WindowState = vbMinimized Then
         Me.WindowState = vbMaximized
     End If
-
+    
     frmSugestao.Show
-
+    
 End Sub
 
 Private Sub mnuTarefas_Click()
-
+    
     On Error GoTo TrataErro
-
+    
     Call mdlIconeBandeja.removerIconeDaBandeja
-
+    
     If Me.WindowState = vbMinimized Then
         Me.WindowState = vbMaximized
     End If
-
+    
     frmTarefa.Show
-
+    
     If Me.autoOrganizarJanelas Then Arrange Me.atualModoOrganizacaoJanelas
-
+    
     Exit Sub
 TrataErro:
     MsgBox "Erro ao tentar abrir o formulário de tarefas" & vbCrLf & Err.Number & vbCrLf & Err.Description, vbExclamation
@@ -435,15 +410,15 @@ End Sub
 
 Private Sub mnuTipos_Click(Index As Integer)
     Dim f As New frmCadastroTipos
-
+    
     f.NomeTipo = Replace(mnuTipos(Index).Caption, "&", "")
-
+    
     f.Tipo = Index
-
+    
     f.Show
-
+    
     If Me.autoOrganizarJanelas Then Arrange Me.atualModoOrganizacaoJanelas
-
+    
 End Sub
 
 Private Sub tbrMain_ButtonClick(ByVal Button As ComctlLib.Button)
@@ -451,28 +426,28 @@ Private Sub tbrMain_ButtonClick(ByVal Button As ComctlLib.Button)
     Dim f As IToolBarControles
 
     Select Case Button.Tag
-    Case "atualizar"
-        If Not ActiveForm Is Nothing Then
-            If TypeOf ActiveForm Is IToolBarControles Then
-                Set f = ActiveForm
-                f.atualizar
+        Case "atualizar"
+            If Not ActiveForm Is Nothing Then
+                If TypeOf ActiveForm Is IToolBarControles Then
+                    Set f = ActiveForm
+                    f.atualizar
+                End If
             End If
-        End If
-    Case "limpar"
-        If Not ActiveForm Is Nothing Then
-            If TypeOf ActiveForm Is IToolBarControles Then
-
-                Set f = ActiveForm
-                f.limpar
+        Case "limpar"
+            If Not ActiveForm Is Nothing Then
+                If TypeOf ActiveForm Is IToolBarControles Then
+                    
+                    Set f = ActiveForm
+                    f.limpar
+                End If
             End If
-        End If
-    Case "contato"
-        mnuSubCadastro_Click (0)
-    Case "tarefa"
-        mnuTarefas_Click
-    Case "anotacao"
-        mnuAnotacao_Click
-    Case "sair"
-        End
+        Case "contato"
+            mnuSubCadastro_Click (0)
+        Case "tarefa"
+            mnuTarefas_Click
+        Case "anotacao"
+            mnuAnotacao_Click
+        Case "sair"
+            End
     End Select
 End Sub

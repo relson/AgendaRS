@@ -59,9 +59,7 @@ Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, Y A
         Case WM_LBUTTONDOWN
 
         Case WM_LBUTTONUP
-            mdlIconeBandeja.removerIconeDaBandeja
-            mdiMain.WindowState = vbMaximized
-            mdiMain.Show
+        
         Case WM_LBUTTONDBLCLK
             
         Case WM_RBUTTONDOWN
