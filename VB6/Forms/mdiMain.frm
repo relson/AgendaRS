@@ -13,16 +13,17 @@ Begin VB.MDIForm mdiMain
    WindowState     =   2  'Maximized
    Begin ComctlLib.Toolbar tbrMain 
       Align           =   1  'Align Top
-      Height          =   900
+      Height          =   870
       Left            =   0
       TabIndex        =   0
       Top             =   0
       Width           =   11820
       _ExtentX        =   20849
-      _ExtentY        =   1588
-      ButtonWidth     =   1667
-      ButtonHeight    =   1429
+      _ExtentY        =   1535
+      ButtonWidth     =   1535
+      ButtonHeight    =   1376
       Appearance      =   1
+      ImageList       =   "imgListToolBar"
       _Version        =   327682
       BeginProperty Buttons {0713E452-850A-101B-AFC0-4210102A8DA7} 
          NumButtons      =   12
@@ -30,26 +31,31 @@ Begin VB.MDIForm mdiMain
             Caption         =   "Contato"
             Object.ToolTipText     =   "Contatos"
             Object.Tag             =   "contato"
+            ImageIndex      =   8
          EndProperty
          BeginProperty Button2 {0713F354-850A-101B-AFC0-4210102A8DA7} 
             Caption         =   "Tarefa"
             Object.ToolTipText     =   "Tarefas"
             Object.Tag             =   "tarefa"
+            ImageIndex      =   3
          EndProperty
          BeginProperty Button3 {0713F354-850A-101B-AFC0-4210102A8DA7} 
             Caption         =   "Anotações"
             Object.ToolTipText     =   "Anotações"
             Object.Tag             =   "anotacao"
+            ImageIndex      =   4
          EndProperty
          BeginProperty Button4 {0713F354-850A-101B-AFC0-4210102A8DA7} 
             Caption         =   "Dúvidas"
             Object.ToolTipText     =   "Dúvidas"
             Object.Tag             =   "duvida"
+            ImageIndex      =   6
          EndProperty
          BeginProperty Button5 {0713F354-850A-101B-AFC0-4210102A8DA7} 
             Caption         =   "Sugestões"
             Object.ToolTipText     =   "Sugestões"
             Object.Tag             =   "sugestao"
+            ImageIndex      =   7
          EndProperty
          BeginProperty Button6 {0713F354-850A-101B-AFC0-4210102A8DA7} 
             Object.Tag             =   ""
@@ -71,11 +77,13 @@ Begin VB.MDIForm mdiMain
             Caption         =   "Atualizar"
             Object.ToolTipText     =   "Atualizar o Formulário"
             Object.Tag             =   "atualizar"
+            ImageIndex      =   10
          EndProperty
          BeginProperty Button10 {0713F354-850A-101B-AFC0-4210102A8DA7} 
             Caption         =   "Limpar"
             Object.ToolTipText     =   "Limpar Formulário"
             Object.Tag             =   "limpar"
+            ImageIndex      =   9
          EndProperty
          BeginProperty Button11 {0713F354-850A-101B-AFC0-4210102A8DA7} 
             Object.Tag             =   ""
@@ -87,6 +95,7 @@ Begin VB.MDIForm mdiMain
             Key             =   "sair"
             Object.ToolTipText     =   "Encerrar AgendaRS"
             Object.Tag             =   "sair"
+            ImageIndex      =   11
          EndProperty
       EndProperty
    End
@@ -101,13 +110,49 @@ Begin VB.MDIForm mdiMain
       MaskColor       =   12632256
       _Version        =   327682
       BeginProperty Images {0713E8C2-850A-101B-AFC0-4210102A8DA7} 
-         NumListImages   =   2
+         NumListImages   =   11
          BeginProperty ListImage1 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
             Picture         =   "mdiMain.frx":0442
             Key             =   ""
          EndProperty
          BeginProperty ListImage2 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
             Picture         =   "mdiMain.frx":075C
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage3 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
+            Picture         =   "mdiMain.frx":0A76
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage4 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
+            Picture         =   "mdiMain.frx":0D90
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage5 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
+            Picture         =   "mdiMain.frx":10AA
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage6 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
+            Picture         =   "mdiMain.frx":13C4
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage7 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
+            Picture         =   "mdiMain.frx":16DE
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage8 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
+            Picture         =   "mdiMain.frx":19F8
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage9 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
+            Picture         =   "mdiMain.frx":1D12
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage10 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
+            Picture         =   "mdiMain.frx":202C
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage11 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
+            Picture         =   "mdiMain.frx":2346
             Key             =   ""
          EndProperty
       EndProperty
