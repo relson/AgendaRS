@@ -13,13 +13,19 @@ VB6
 -------
 Sobre o Projeto em Visual Basic 6
 
+[Ver documentação](Doc/)
+
 PHP
 -------
 Inicialmente migrado para o PHP e SQL utilizando a o PHP Generator da SQL Maestro.
 
+[Ver documentação](Doc/)
+
 Java Swing
 -------
 Uma versão com Java Swing
+
+[Ver documentação](Doc/)
 
 Banco de Dados
 -------
@@ -34,6 +40,7 @@ O versão do VB6 foi feita utilizando o MS Access, com a ferramenta VISDATA que 
 
 ![database busca tabelas](tarefas.png)
 
+[Ver documentação](Doc/)
 
 A fazer
 -------
