@@ -46,5 +46,6 @@ A fazer
 -------
 1. ~Melhorar documentação~
 2. Separar os projetos em repositórios diferentes
+    - [AgendaRS - Blazor](https://github.com/relson/agendars-blazor)
 3. Refatorar Projeto VB6
 4. Arquivar projeto VB6
