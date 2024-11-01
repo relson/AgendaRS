@@ -48,5 +48,6 @@ A fazer
 2. Separar os projetos em repositórios diferentes
     - [AgendaRS .NET](https://github.com/relson/agendars-dotnet)
     - [AgendaRS Java](https://github.com/relson/agendars-java)
+    - [AgendaRS PHP](https://github.com/relson/agendars-php)
 3. Refatorar Projeto VB6
 4. Arquivar projeto VB6
