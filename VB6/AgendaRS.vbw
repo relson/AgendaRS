@@ -1,4 +1,4 @@
-mdiMain = 46, 60, 730, 429, , 22, 29, 666, 485, C
+mdiMain = 46, 60, 730, 429, Z, 22, 29, 666, 485, C
 mdlUtilsCtrls = 0, 0, 677, 373, 
 frmCadastroContato = 68, 89, 641, 541, C, 66, 87, 710, 536, C
 frmCadastroTipos = 22, 29, 712, 402, C, 88, 116, 732, 572, C
@@ -15,7 +15,7 @@ mdlUtils = 66, 87, 699, 543, C
 frmContato = 2, 2, 769, 521, , 88, 116, 859, 639, C
 mdlContato = 44, 58, 815, 581, C
 frmPreferencias = 110, 145, 863, 633, C, 44, 58, 914, 546, C
-frmAnotacao = 44, 58, 884, 546, Z, 22, 29, 862, 517, C
+frmAnotacao = 44, 58, 884, 546, , 22, 29, 862, 517, C
 frmCadastroAnotacao = 66, 87, 906, 575, C, 44, 58, 884, 546, C
 mdlIconeBandeja = 154, 203, 925, 726, C
 frmIconeBandeja = 156, 205, 923, 724, , 132, 174, 903, 697, C

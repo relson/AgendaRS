@@ -492,6 +492,10 @@ Private Sub tbrMain_ButtonClick(ByVal Button As ComctlLib.Button)
             mnuTarefas_Click
         Case "anotacao"
             mnuAnotacao_Click
+        Case "sugestao"
+            mnuSugestao_Click
+        Case "duvida"
+            mnuDuvida_Click
         Case "sair"
             End
     End Select

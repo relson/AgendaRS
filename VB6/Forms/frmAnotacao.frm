@@ -91,6 +91,7 @@ Begin VB.Form frmAnotacao
          NumTabs         =   1
          BeginProperty Tab1 {0713F341-850A-101B-AFC0-4210102A8DA7} 
             Caption         =   "&Todas"
+            Key             =   ""
             Object.Tag             =   ""
             ImageVarType    =   2
          EndProperty
@@ -166,8 +167,8 @@ End Sub
 
 Private Sub Form_Resize()
     
-    Dim intHeight As Integer
-    Dim intWidth As Integer
+    Dim lngHeight As Long
+    Dim lngWidth As Long
     
     Dim intSpaceHeight As Integer
     Dim intSpaceWidth As Integer
@@ -175,13 +176,13 @@ Private Sub Form_Resize()
     
     With Me.tabTarefas
         
-        intWidth = ScaleWidth - .Left
+        lngWidth = ScaleWidth - .Left
         
-        If intWidth > 0 Then
-            .Width = intWidth
+        If lngWidth > 0 Then
+            .Width = lngWidth
             
-            intWidth = .ClientWidth - (.ClientLeft * 2) - Me.cmdAdicionar.Width
-            If intWidth > 0 Then ltwTarefa.Width = intWidth
+            lngWidth = .ClientWidth - (.ClientLeft * 2) - Me.cmdAdicionar.Width
+            If lngWidth > 0 Then ltwTarefa.Width = lngWidth
             
             Me.cmdAdicionar.Left = .ClientWidth - Me.cmdAdicionar.Width
             Me.cmdAlterar.Left = Me.cmdAdicionar.Left
@@ -191,18 +192,18 @@ Private Sub Form_Resize()
             
         End If
         
-        intHeight = ScaleHeight - (Me.cmdSair.Height + (.Top * 2))
+        lngHeight = ScaleHeight - (Me.cmdSair.Height + (.Top * 2))
         
-        If intHeight > 0 Then
-            .Height = intHeight
+        If lngHeight > 0 Then
+            .Height = lngHeight
             
-            intHeight = .ClientHeight - .ClientTop
+            lngHeight = .ClientHeight - .ClientTop
             
-            If intHeight > 0 Then ltwTarefa.Height = intHeight
+            If lngHeight > 0 Then ltwTarefa.Height = lngHeight
             
-            intHeight = ScaleHeight - (Me.cmdSair.Height + (.Top * 2))
+            lngHeight = ScaleHeight - (Me.cmdSair.Height + (.Top * 2))
             
-            Me.cmdSair.Top = intHeight + .Top * 2
+            Me.cmdSair.Top = lngHeight + .Top * 2
             
         End If
         
