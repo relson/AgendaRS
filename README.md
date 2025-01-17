@@ -13,19 +13,19 @@ VB6
 -------
 Sobre o Projeto em Visual Basic 6
 
-[Ver documentação](Doc/)
+[Ver documentação](Doc/VB6.md)
 
 PHP
 -------
 Inicialmente migrado para o PHP e SQL utilizando a o PHP Generator da SQL Maestro.
 
-[Ver documentação](Doc/)
+[Ver documentação](Doc/PHP.md)
 
 Java Swing
 -------
 Uma versão com Java Swing
 
-[Ver documentação](Doc/)
+[Ver documentação](Doc/JavaSwing.md)
 
 Banco de Dados
 -------
