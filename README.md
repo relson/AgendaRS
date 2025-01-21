@@ -30,7 +30,7 @@ Uma versão com Java Swing
 Banco de Dados
 -------
 
-O versão do VB6 foi feita utilizando o MS Access, com a ferramenta VISDATA que vem junto do VB6, a primeira modelagem foi bem complicada, com a maioria das entidades N para N, por isso tem bastante tabela de ligação. A primeira entidade modelada assim foi a de ```contato```, acabei simplificando bastante na próxima a ```tarefa```, veja no diagrama abaixo a diferença:
+O versão do VB6 foi feita utilizando o MS Access, com a ferramenta `VISDATA` que vem junto do `VB6`, a primeira modelagem foi bem complicada, com a maioria das entidades N para N, por isso tem bastante tabela de ligação. A primeira entidade modelada assim foi a de ```contato```, acabei simplificando bastante na próxima a ```tarefa```, veja no diagrama abaixo a diferença:
 
 > Tabela: ```contato```
 
