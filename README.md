@@ -45,9 +45,10 @@ O versão do VB6 foi feita utilizando o MS Access, com a ferramenta `VISDATA` qu
 A fazer
 -------
 1. ~Melhorar documentação~
-2. ~Separar os projetos em repositórios diferentes~
+    - Diagramas com `Mermaid`
+3. ~Separar os projetos em repositórios diferentes~
     - [AgendaRS .NET](https://github.com/relson/agendars-dotnet)
     - [AgendaRS Java](https://github.com/relson/agendars-java)
     - [AgendaRS PHP](https://github.com/relson/agendars-php)
-3. Refatorar Projeto VB6
-4. Arquivar projeto VB6
+4. Refatorar Projeto VB6
+5. Arquivar projeto VB6
